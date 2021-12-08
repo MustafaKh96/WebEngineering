@@ -1,18 +1,16 @@
-body{
-    background-color: #2d2d2d;
-}
 #Container{
-    border: 2px solid rgb(11, 134, 114);
-    border-radius: 20px;
-    background-color: #1d1d1d;
-    margin-top: -8px;
-    margin-left: 200px;
-    margin-right: 200px;
+    /*border: 2px solid rgb(11, 134, 114);*/
+    /*border-radius: 20px;*/
+    background-color: white;
+    margin-left: 17vw;
+    margin-right: 17vw;
+    height: 100%;
 }
 #h1{
     text-align: center;
-    color: white;
-    text-shadow: 2px 2px 5px white;
+    text-shadow: 2px 2px 5px rgb(11, 134, 114);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: underline;
 }
 a{
     text-align: center;
@@ -21,7 +19,11 @@ a{
     border: 2px solid rgb(11, 134, 114);
     border-radius: 20px;
     margin: 10px;
-    margin-left: 5vw;
-    margin-right: 5vw;
     padding: 30px;
+    font-size: 20px;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.Exercise:hover{
+    margin: 13px;
+    background-color:rgba(11, 134, 113, 0.295);
 }
