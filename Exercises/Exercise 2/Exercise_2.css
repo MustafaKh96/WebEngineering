@@ -1,0 +1,72 @@
+.Header{
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0 1em black;
+    width: 100%;
+    float:left;
+    position: sticky;
+    top : 0;
+}
+div#hOmE{
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    float: left;
+}
+div#Links{
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    float: left;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 60px;
+}
+div#U11{
+    border: 1px solid gray;
+    border-radius: 10px;
+    float: left;
+    padding-left: 129px;
+    padding-right: 129px;
+}
+div#U12{
+    border: 1px solid gray;
+    border-radius: 10px;
+    float: left;
+    padding-left: 129px;
+    padding-right: 129px;
+}
+div#U13{
+    border: 1px solid gray;
+    border-radius: 10px;
+    float: left;
+    padding-left: 129px;
+    padding-right: 129px;
+}
+div#rechts{
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    float: left;
+    padding-left: 53px;
+    padding-right: 50px;
+    height: 60px;
+}
+div.Uebung:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+div.Uebung:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+div#Links:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+div#rechts:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+div#hOmE:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}

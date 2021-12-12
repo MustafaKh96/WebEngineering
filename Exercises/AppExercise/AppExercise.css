@@ -1,14 +1,21 @@
+body{
+    background-image: url(./oo.jpg);
+    background-size: 2000px 1090px;
+
+}
 #Container{
-    /*border: 2px solid rgb(11, 134, 114);*/
-    /*border-radius: 20px;*/
     background-color: white;
     margin-left: 17vw;
     margin-right: 17vw;
     height: 100%;
+    border:  1px solid gray;;
+    border-radius: 10px;
+    box-shadow: 0 0 1em black;
+
 }
 #h1{
     text-align: center;
-    text-shadow: 2px 2px 5px rgb(11, 134, 114);
+    text-shadow: 2px 2px 5px gray;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: underline;
 }
@@ -16,7 +23,7 @@ a{
     text-align: center;
 }
 .Exercise{
-    border: 2px solid rgb(11, 134, 114);
+    border: 2px solid gray;
     border-radius: 20px;
     margin: 10px;
     padding: 30px;
@@ -24,6 +31,12 @@ a{
     transition:cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .Exercise:hover{
-    margin: 13px;
-    background-color:rgba(11, 134, 113, 0.295);
+    margin-left: 1px;
+    margin-right: 1px;
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+a{
+    color: black;
+    text-decoration: unset;
 }

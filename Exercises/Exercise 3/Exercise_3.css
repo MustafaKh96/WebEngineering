@@ -1,0 +1,48 @@
+.Header{
+    display: grid;
+    grid-template-columns: 59px 100px 1fr 100px 70px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0 1em black;
+    width: 100%;
+}
+div#hOmE{
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+div#Links{
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding-left: 25%;
+}
+div#U11{
+    border: 1px solid gray;
+    border-radius: 10px;
+    text-align: center;
+}
+div#rechts{
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    padding-left: 24px;
+}
+div#abc{
+    padding-left: 10px;
+    padding-top: 2px;
+}
+div.Uebung:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+div#Links:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+div#rechts:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
+div#hOmE:hover{
+    transition: 100ms ;
+    background-color:rgba(64, 156, 192, 0.363);
+}
