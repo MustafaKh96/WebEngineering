@@ -63,47 +63,48 @@ div#abc{
     display: none;
     position: absolute;
     right: 0;
+    border: 1px solid black;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    box-shadow: 0px 2px 10px 0px black;
   }
 div#abc:hover .Index {
     display: block;
 }
 .Index a {
+    text-decoration: none;
+    border-bottom: 1px solid grey;
     color: black;
     padding: 12px 16px;
-    text-decoration: none;
     display: block;
 }
 
 /* ----------------------------------------------------- */
 div#Links:hover{
     transition: 100ms ;
-    background-color:rgba(64, 156, 192, 0.363);
+    background-color:rgb(136, 189, 241);
 }
 div#rechts:hover{
     transition: 100ms ;
-    background-color:rgba(64, 156, 192, 0.363);
+    background-color:rgb(136, 189, 241);
 }
 div#hOmE:hover{
     transition: 100ms ;
-    background-color:rgba(64, 156, 192, 0.363);
+    background-color:rgb(136, 189, 241);
 }
 div#abc:hover{
     transition: 100ms ;
-    background-color:rgba(64, 156, 192, 0.363);
+    background-color:rgb(136, 189, 241);
 }
 .Index a:hover{
     transition: 100ms ;
-    background-color:rgba(64, 156, 192, 0.363);
+    background-color:rgb(136, 189, 241);
 }
 /* ----------------------------------------------------- */
 
 .question{
     border: 1px solid black;
-    background-color: rgba(64, 156, 192, 0.363);
+    background-color: rgb(136, 189, 241);
 }
 .answer{
     border: 1px solid black;

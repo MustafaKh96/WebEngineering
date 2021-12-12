@@ -1,6 +1,6 @@
 body{
-    background-image: url(./oo.jpg);
-    background-size: 2000px 1090px;
+    background-image: url(./bgi.jpg);
+    background-size: 1000px 1090px;
 
 }
 #Container{
@@ -15,7 +15,7 @@ body{
 }
 #h1{
     text-align: center;
-    text-shadow: 2px 2px 5px gray;
+    text-shadow: 7px 7px 5px rgba(64, 156, 192, 0.363);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: underline;
 }
