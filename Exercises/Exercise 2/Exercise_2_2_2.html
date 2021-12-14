@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 1. Teil</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <style>
+        .img-1{
+          box-sizing: border-box;
+          font-size: 24px;
+          padding: 1em;
+          margin: 0.5em;
+          border-style: groove;
+          width: calc(100% - 1em)
+  
+        }
+        input:checked{
+          color: blue;
+        }
+        input:not(:checked) ~ img{
+            opacity: 0%;
+        }
+      </style>
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_2_2_1.html"><i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div class="Uebung" id="U11">
+            <h3> 2.2.2 CSS Positionierung</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_2_3.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a></div>
+            <div id="abc">
+                <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+                <div class="Index" style="right:0;">
+                <a href="./Exercise_2_1.html">2.1 CSS Selektoren und CSS Farben</a>
+                <a href="./Exercise_2_2_1.html">2.2.1 CSS Positionierung</a>
+                <a href="./Exercise_2_2_2.html">2.2.2 CSS Positionierung</a>
+                <a href="./Exercise_2_3.html">2.3. Wireframe with HTML and CSS</a>
+                </div>
+            </div>
+    </div>
+    <h1 style="font-size: 60px;">Übung 2.2</h1>
+    <br>
+    <input type="checkbox" id="abc" checked>
+    <label for="abc" style="font-size: 20px;">hide and show via checkbox</label>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Hochschule_Bonn-Rhein-Sieg_Wolfgang_G%C3%B6ddertz_Induktion.jpg"
+    class="img-1">
+</body>
+</html>

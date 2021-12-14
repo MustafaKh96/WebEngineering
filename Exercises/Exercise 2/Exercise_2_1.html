@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 1. Teil</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div class="Uebung" id="U11">
+            <h3> 2.1 CSS Selektoren und CSS Farben</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_2_2_1.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_2_1.html">2.1 CSS Selektoren und CSS Farben</a>
+            <a href="./Exercise_2_2_1.html">2.2.1 CSS Positionierung</a>
+            <a href="./Exercise_2_2_2.html">2.2.2 CSS Positionierung</a>
+            <a href="./Exercise_2_3.html">2.3. Wireframe with HTML and CSS</a>
+            </div>
+        </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            1) Berechnen Sie die Spezifität folgender CSS-Selektoren:
+            <ol>
+                <li>div div div:focus  .inner</li>
+                <li>h1 + div.main</li>
+                <li>div a:link[href*='h-brs']</li>
+                <li>nav > a:hover::before</li>
+                <li>ul#primary-nav  li.active</li>
+            </ol>
+        </h2>
+        <h2 class="answer">
+            <ol>
+                <li>23</li>
+                <li>12</li>
+                <li>22</li>
+                <li>13</li>
+                <li>112</li>
+            </ol>
+        </h2>
+        <h2 class="question">
+            1) Rechnen Sie folgende RGB-Werte in HSL-Werte um:
+            <ol>
+                <li>#ffffff</li>
+                <li>#000</li>
+                <li>#ab0978</li>
+                <li>rgb(127,255,33)</li>
+                <li>rgba(255,127,33,0.8)</li>
+            </ol>
+        </h2>
+        <h2 class="answer">
+            <ol>
+                <li>hsl(0,0%,100%)</li>
+                <li>hsl(0,0%,0%)</li>
+                <li>hsl(319, 90%, 35%)</li>
+                <li>hsl(95, 100%, 56%)</li>
+                <li>hsl(25, 100%, 56%)</li>
+            </ol>
+        </h2>
+    </div>
+</body>
+</html>
