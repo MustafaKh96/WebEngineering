@@ -9,7 +9,7 @@ body{
     height: 100%;
     border:  1px solid gray;;
     border-radius: 10px;
-    box-shadow: 0 0 3em black;
+    box-shadow: 0 0 1em black;
 }
 #h1{
     text-align: center;
