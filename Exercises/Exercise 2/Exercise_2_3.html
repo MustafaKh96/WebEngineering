@@ -11,13 +11,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--End-->
     <style>
-        input:checked{
-          color: blue;
-        }
-        input:not(:checked) ~ img{
-            opacity: 0%;
-        }
-      </style>
+      .body{
+      background-color: #b2d6d1;
+      margin: 50px;
+      border: 2px solid black;
+      box-shadow: 0 0 1em black;
+      text-align: center;
+      }
+      div.a {
+        background-color: white;
+        margin: inherit;
+        max-width: 7xp;
+
+      }
+      .inhalt{
+        background-color: white;
+        padding-left: 30%;
+        margin-left: 40px;
+        margin-right: 40px;
+        border-radius: 4px;
+      }
+      .textfield{
+        width: 10vw;
+        height: 25px;
+      }
+    </style>
 </head>
 <body>
     <div class="Header">
@@ -25,7 +43,7 @@
             <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
         </div>
         <div id="Links">
-            <a href="./Exercise_2_2_1.html"><i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+            <a href="./Exercise_2_2_2.html"><i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
         </div>
         <div class="Uebung" id="U11">
             <h3> 2.3 Wireframe with HTML and CSS</h3>
@@ -43,7 +61,119 @@
             </div>
         </div>
     </div>
-
-
+    <div class="body">
+      <h1>Survy form</h1>
+      <div class="inhalt">
+        
+          <table>
+            <br><br>
+              <td colspan="2" style="text-align: right;">Let us know how we can improve freeCodeCamp
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </td>
+              <tr>
+                <td style="text-align: right;">
+                  <p>
+                    <sup>*</sup>Name:
+                    &nbsp;&nbsp;&nbsp;
+                  </p>
+                </td>
+                <td style="text-align: left;">
+                  <input class="textfield" type="text" placeholder="Enter your name" >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p style="text-align: right;">
+                    <sup>*</sup>Email:
+                    &nbsp;&nbsp;&nbsp;
+                  </p>
+                </td>
+                <td>
+                  <input class="textfield" type="text" placeholder="Enter your Email">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p style="text-align: right;">
+                    <sup>*</sup>Age:
+                    &nbsp;&nbsp;&nbsp;
+                  </p>
+                </td>
+                <td>
+                  <input class="textfield" type="number" placeholder="Age">
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center;">
+                  <p>Which option best describes you current role?
+                    &nbsp;&nbsp;&nbsp;
+                  </p>
+                </td>
+                <td style="text-align: left;">
+                  <div>
+                    <select style="width: 7vw;height: 30px;margin-top: 14px;">
+                      <option>Student</option>
+                      <option>Schüler</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center;">
+                  <p>&nbsp;&nbsp;How likely is that you wourld recommend<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;
+                    freeCodeCamp to a frind?</p>
+                </td>
+                <td style="text-align: left;padding-top: 20px;">
+                  <input type="radio" name="radio">
+                  <label class="container">Definitly
+                  </label>
+                  <br>
+                  <input type="radio" name="radio">
+                  <label class="container">Maybe
+                  </label>
+                  <br>
+                  <input type="radio" name="radio">
+                  <label class="container">Not sure
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center;">
+                  <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    What do you like most in FCC:
+                  </p>
+                </td>
+                <td style="text-align: left;">
+                  <div>
+                    <select style="width: 7vw;height: 30px;margin-top: 14px;">
+                      <option>Select an option</option>
+                      <option>option1</option>
+                      <option>option1</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center;">
+                  <p>Things that should be improves in the future <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    (Check all that apply):</p>
+                </td>
+                <td style="text-align: left;">
+                  <input type="checkbox"> Front-end Projects <br>
+                  <input type="checkbox"> Back-end Projects <br>
+                  <input type="checkbox"> Data Visualization <br>
+                </td>
+              </tr>
+            </table>
+          </div>
+    </div>
 </body>
 </html>
