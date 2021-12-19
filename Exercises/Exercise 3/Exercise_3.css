@@ -140,7 +140,75 @@
         height: 600px;
         margin-bottom: 0px;
         margin-left: 0px;
-    }
+    } 
+}
+
+
+/*3_3*/
+.header{
+    background-color: #1f1f1f;
+    color: white;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Items_header{
+    font-size: 23px;
+    padding: 30px;
+}
+.container_main{
+    display: grid;
+}
+#item_1_cm{
+    grid-column: 1/4;
+    text-align: center;
+    margin-bottom: 10px ;
+}
+#item_2_cm{
+    grid-column: 2/3;
+}
+img{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+#item_3_cm{
+    text-align: center;
+    font-size: 20px;
+    margin-right: 200px;
+}
+.items_of_item3_cm{
+    margin-bottom: 60px;
+}
+#id1_of_items_of_item3_cm{
+    margin-top: 100px;
+}
+#id4_of_items_of_item3_cm{
+    background-color: coral;
+    border-radius: 5px;
+    color: white;
+    height: 30px;
+    width: 300px;
+    margin-left: 13vw;
     
+}
+.the_end{
+    background-color: #1f1f1f;
+    height: 130px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+}
+#the_first_item_in_the_end{
+    padding-top: 20px;
+    
+}
+#the_last_item{
+    background-color: coral;
+    border-radius: 5px;
+    height: 35px;
+    width: 500px;
+    margin-left: 36vw;
 
 }
