@@ -129,13 +129,17 @@
         flex-direction: column;
     }
     #f_item1{
+        margin-bottom: 0px;
         height: 170px;
     }
     #f_item2{
         height: 170px;
+        margin-bottom: 0px;
     }
     #f_item3{
         height: 600px;
+        margin-bottom: 0px;
+        margin-left: 0px;
     }
     
 
