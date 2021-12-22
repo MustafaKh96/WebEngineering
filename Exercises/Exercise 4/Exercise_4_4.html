@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung</title>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_4_3.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 4.4 Topsort</h3>
+        </div>
+        <div id="rechts">
+            <a href="./Exercise_4_1.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+                <div class="Index" style="right:0;">
+                    <a href="./Exercise_4_1.html">4.1 Funktionen</a>
+                    <a href="./Exercise_4_2.html">4.2 Objekte</a>
+                    <a href="./Exercise_4_3.html">4.3 Fibonacci</a>
+                    <a href="./Exercise_4_4.html">4.4 Topsort</a>
+                    </div>
+                </a>
+        </div>
+    </div>
+    <h2 class="question">
+        In jedem Projekt fallen Aufgaben (Tasks) an. Zwischen den Aufgaben gibt es paarweise Abhängigkeiten. Z.B. kann Task2 von Task1 abhängen, d.h. erst muss Task1 fertig sein, bevor Task2 starten kann, weil es dessen Ergebnisse benötigt. Tasks können auch unabhängig voneinander sein und parallel ablaufen. In JavaScript können Sie die Abhängigkeiten in Arrays codieren, z.B. kann man bei [ ["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"] ] nicht prüfen, ohne vorher gegessen zu haben. Transitive Abhängigkeiten müssen also berücksichtigt werden.
+        Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet. Topologische Sortierung ist eine Form von Sortierung. Sie kennen die Funktion Array.prototype.sort() und wissen, was als Ergebnis erwartet wird, nämlich eine sortiere Liste. Genauso ist das hier. Die Funktion topsort() soll eine sortierte Liste ausgeben, die keine der eingegebenen Abhängigkeiten verletzt.
+        Achten Sie auf Performanz. Berechnen Sie die topologische Sortierung in linearer Zeit (Average Case).
+    </h2>
+    <h2 class="answer">
+        function identity(value){<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;return value;<br>
+        } <br>
+        Beispiel: identity(10); //10
+    </h2>
+   
+</body>
+</html>

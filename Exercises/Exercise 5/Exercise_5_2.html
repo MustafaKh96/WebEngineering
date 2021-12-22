@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_5_1.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 5.2 Rednerliste mit Zeitmessung</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_5_1.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_5_1.html">5.1 Performanzmessungen von DOM-Operationen</a>
+            <a href="./Exercise_5_2.html">5.2 Rednerliste mit Zeitmessung</a>
+            </div>
+        </div>
+    </div>
+    <h2 class="question">
+        Implementieren Sie die interaktive Anwendung "Rednerliste mit Zeitmessung" selbstständig in JavaScript durch Nutzung der DOM API und der Timer-Funktionen. Neue Redner sollen auf Knopfdruck hinzugefügt werden können. Deren Uhr wird dann sofort automatisch gestartet und alle anderen Uhren angehalten. Bei jedem Redner soll die individuelle, gemessene Redezeit sekundengenau angezeigt werden. Für jeden Redner soll es einen eigenen Start-/Stopp-Button geben. Es soll immer nur eine Uhr laufen. Angezeigt werden sollen die bisherigen Summenzeiten aller Redebeiträge der betreffenden Person. Suchen Sie eine möglichst kurze und elegante Lösung. Achten Sie gleichzeitig auf gute Usability: z.B. wenn die Eingabe mit einem Return beendet wird, soll der Button-Click nicht mehr erforderlich sein, usw.
+    </h2>
+
+    <h1>Rednerliste</h1>
+    <label for="fname">Neuer Redner: </label>
+    <input type="text" id="rednername">       
+    <button id="hinzufuegen">Hinzufügen</button>
+    <ul id="myList"></ul>
+
+
+    <h2 class="answer">
+        <pre>
+        Code in JS:
+        function myFunction() {
+            var textinput = document.getElementById("rednername").value;
+            var node = document.createElement("LI");
+            var myButton = document.createElement("BUTTON");
+            myButton.innerHTML = "STOP";
+            var smhTime = function(t){
+                if (t < 10) {
+                    t = "0" + t;
+                }
+                return t;
+            }
+            var s = 0;
+            var m = 0;
+            var h = 0;
+            var myTimer = function () {                
+                if(s > 59){
+                    s = 0;
+                    m++;
+                }
+                else if(m > 60){
+                    m = 0;
+                    h++; 
+                }           
+                node.textContent = textinput + " "+ smhTime(h) + ":"+ smhTime(m) + ":" + smhTime(s++)+ " " ;
+                node.appendChild(myButton);
+            }
+                   
+            if(textinput != ""){              
+                let dieZeit = setInterval(myTimer, 1000);     
+                myButton.addEventListener("click", ()=>{
+                    if(myButton.innerHTML === "STOP"){
+                        clearInterval(dieZeit);
+                        myButton.innerHTML = "START";
+                    }else{
+                        dieZeit = setInterval(myTimer, 1000);
+                        myButton.innerHTML = "STOP";
+                    }
+                    });                                
+                document.getElementById("myList").appendChild(node);                
+            }
+        }
+        const res = document.getElementById("hinzufuegen");
+        res.addEventListener("click",myFunction);   
+        </pre>
+    </h2>
+
+
+</body>
+<script>
+
+    function myFunction() {
+        var textinput = document.getElementById("rednername").value;
+        var node = document.createElement("LI");
+        var myButton = document.createElement("BUTTON");
+        myButton.innerHTML = "STOP";
+        var smhTime = function(t){
+            if (t < 10) {
+                t = "0" + t;
+            }
+            return t;
+        }
+        var s = 0;
+        var m = 0;
+        var h = 0;
+        var myTimer = function () {                
+            if(s > 59){
+                s = 0;
+                m++;
+            }
+            else if(m > 60){
+                m = 0;
+                h++; 
+            }           
+            node.textContent = textinput + " "+ smhTime(h) + ":"+ smhTime(m) + ":" + smhTime(s++)+ " " ;
+            node.appendChild(myButton);
+        }
+               
+        if(textinput != ""){              
+            let dieZeit = setInterval(myTimer, 1000);     
+            myButton.addEventListener("click", ()=>{
+                if(myButton.innerHTML === "STOP"){
+                    clearInterval(dieZeit);
+                    myButton.innerHTML = "START";
+                }else{
+                    dieZeit = setInterval(myTimer, 1000);
+                    myButton.innerHTML = "STOP";
+                }
+                });                                
+            document.getElementById("myList").appendChild(node);                
+        }
+    }
+    const res = document.getElementById("hinzufuegen");
+    res.addEventListener("click",myFunction);
+
+
+</script>
+</html>

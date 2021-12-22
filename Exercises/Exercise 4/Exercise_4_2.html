@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung</title>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_4_1.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 4.2 Objekte</h3>
+        </div>
+        <div id="rechts">
+            <a href="./Exercise_4_3.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+                <div class="Index" style="right:0;">
+                    <a href="./Exercise_4_1.html">4.1 Funktionen</a>
+                    <a href="./Exercise_4_2.html">4.2 Objekte</a>
+                    <a href="./Exercise_4_3.html">4.3 Fibonacci</a>
+                    <a href="./Exercise_4_4.html">4.4 Topsort</a>
+                    </div>
+                </a>
+        </div>
+    </div>
+    <h2 class="question">
+        Schreiben Sie die Prototypen Person und Auto in JavaScript, so dass jede Person weiß, welche Autos sie besitzt. Schreiben Sie eine Funktion conflict(), die feststellt, ob ein Auto von mehr als einer Person besessen wird.
+    </h2>
+    <h2 class="answer" style="font-family: 'Courier New', Courier, monospace;">
+<pre>
+    function f_person(vorname, nachname, alter, auto){ // Auto MUSS als Array übergeben werden. z.B: [auto1] oder [auto1, auto2].
+        this.vorname = vorname;
+        this.nachname = nachname;
+        this.alter = alter;
+        if(auto == null){
+            this.auto = auto;
+        }
+        else{
+          auto.anzahlDerBesitzer = auto.anzahlDerBesitzer + 1;
+          this.auto = auto;
+        }
+        this.addAuto = function(new_auto){ // Hier kann man einer Person ein Auto hinzufügen :)
+            let erg = "";
+            if(auto.includes(new_auto)){
+                erg = "Auto exsistiert schon";
+            }
+            else{
+                new_auto.anzahlDerBesitzer = new_auto.anzahlDerBesitzer + 1;
+                this.auto.push(new_auto);
+                erg = "Auto ist geaddet";
+            }
+            return erg;
+        }
+
+        this.welcheAutos = function(){ // Hier kann man sehen, welche Autos man hat.
+            let erg = this.vorname +" hat ";
+            if(auto == null){
+                erg += " kein Auto.";
+                
+            }
+            else{
+              for (let i = 0; i < auto.length; i++) {
+                if(i == auto.length-1){
+                  erg += auto[i].type + ".";
+                }
+                else{
+                  erg += auto[i].type + " und ";
+                }
+              }
+            }
+            return erg;	  
+        }
+      }
+    
+      
+      
+      function f_Auto(type, model, color, anzahlDerBesitzer){
+        this.type = type;
+        this.model = model;
+        this.color = color;
+        this.anzahlDerBesitzer = 0;
+        this.conflict = function(anzahlDerBesitzer){
+          let erg = "";
+          if(anzahlDerBesitzer>1){
+            erg = "Das Auto wird von mehr als einer Person besessen ";
+          }
+          else if(anzahlDerBesitzer == 1){
+            erg = "Das Auto wird von NUR einer Person besessen ";
+          }
+          else{
+            erg = "Das Auto wird NICHT besessen ";
+          }
+          return erg;
+        }
+        this.dd = function(x){
+            return x;
+        }
+      }
+
+      Beispiel:
+      let auto1 = new f_Auto("Audi", "TT", "schwarz");
+      let auto2 = new f_Auto("BMW", "X5", "schwarz");
+      let person1 = new f_person("Mustafa", "KH", 25, null);
+      console.log(person1.welcheAutos()); // Mustafa hat kein Auto.
+      console.log(person1.addAuto(auto1)); // "Auto ist geaddet".
+      console.log(person1.addAuto(auto1)); // "Auto exsistiert schon".
+      console.log(person1.addAuto(auto2)); // "Auto ist geaddet".
+      console.log(person1.welcheAutos()); // Mustafa hat Audi und BMW.
+      console.log(auto1.conflict(auto1.anzahlDerBesitzer)); // "Das Auto wird von mehr als einer Person besessen "
+
+</pre>
+    </h2>
+   
+</body>
+</html>

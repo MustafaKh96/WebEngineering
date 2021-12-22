@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+</style>
+</head>
+<body>
+    <h1>Rednerliste</h1>
+    <label for="fname">Neuer Redner: </label>
+    <input type="text" id="rednername">       
+    <button id="hinzufuegen">Hinzufügen</button>
+    <ul id="myList"></ul>
+    </body>
+
+
+    <script>
+
+        function myFunction() {
+            var textinput = document.getElementById("rednername").value;
+            var node = document.createElement("LI");
+            var myButton = document.createElement("BUTTON");
+            myButton.innerHTML = "STOP";
+            var smhTime = function(t){
+                if (t < 10) {
+                    t = "0" + t;
+                }
+                return t;
+            }
+            var s = 0;
+            var m = 0;
+            var h = 0;
+            var myTimer = function () {                
+                if(s > 59){
+                    s = 0;
+                    m++;
+                }
+                else if(m > 60){
+                    m = 0;
+                    h++; 
+                }           
+                node.textContent = textinput + " "+ smhTime(h) + ":"+ smhTime(m) + ":" + smhTime(s++)+ " " ;
+                node.appendChild(myButton);
+            }
+                   
+            if(textinput != ""){              
+                let dieZeit = setInterval(myTimer, 1000);     
+                myButton.addEventListener("click", ()=>{
+                    if(myButton.innerHTML === "STOP"){
+                        clearInterval(dieZeit);
+                        myButton.innerHTML = "START";
+                    }else{
+                        dieZeit = setInterval(myTimer, 1000);
+                        myButton.innerHTML = "STOP";
+                    }
+                    });                                
+                document.getElementById("myList").appendChild(node);                
+            }
+        }
+        const res = document.getElementById("hinzufuegen");
+        res.addEventListener("click",myFunction);
+
+
+    </script> 
+</html>

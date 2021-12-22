@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+</style>
+</head>
+<body>
+    <h1>Rednerliste</h1>
+    <form id = "redner-form">
+          <label for="fname">Neuer Redner: </label>
+          <input type="text" id="rednername">       
+    </form>
+    <button onclick="myFunction()">Hinzufügen</button>
+    <ul id="myList"></ul>
+    </body>
+    <script>
+
+        
+
+        
+
+        function myFunction() {
+            var textinput = document.getElementById("rednername").value;
+            if(textinput != ""){
+                var node = document.createElement("LI");
+                var namenode = document.createTextNode(textinput + " ");
+                var timenode = document.createTextNode(myCounter() + " ");
+                
+                var my = document.createElement("BUTTON");
+                node.appendChild(namenode);
+                
+
+                my.innerHTML = "STOP";
+                my.addEventListener("click", ()=>{
+                    if(my.innerHTML === "STOP"){
+                        my.innerHTML = "START";
+                    }else{
+                        my.innerHTML = "STOP";
+                    }
+                    });
+                node.appendChild(timenode);
+                node.appendChild(my);
+
+                document.getElementById("myList").appendChild(node);
+            }
+        }
+
+
+        function smhTime(t){
+            if (t < 10) {t = "0" + t};
+            return t;
+        }
+       
+        function myCounter() {
+            var s = 0;
+            var m = 0;
+            var h = 0;
+            if(s > 59){
+                s = 0;
+                m++;
+            }
+            else if(m > 60){
+                m = 0;
+                h++; 
+            }
+            return smhTime(h) + ":"+ smhTime(m) + ":" + smhTime(s++);
+        }
+
+
+
+    </script>
+    
+    
+</html>

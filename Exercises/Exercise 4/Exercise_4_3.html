@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung</title>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_4_2.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 4.3 Fibonacci</h3>
+        </div>
+        <div id="rechts">
+            <a href="./Exercise_4_4.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+                <div class="Index" style="right:0;">
+                    <a href="./Exercise_4_1.html">4.1 Funktionen</a>
+                    <a href="./Exercise_4_2.html">4.2 Objekte</a>
+                    <a href="./Exercise_4_3.html">4.3 Fibonacci</a>
+                    <a href="./Exercise_4_4.html">4.4 Topsort</a>
+                    </div>
+                </a>
+        </div>
+    </div>
+    <h2 class="question">
+        Schreiben Sie im Browser die Fibonacci-Funktion in JavaScript und geben Sie die ersten 2000 Fibonacci-Zahlen 0,1,1,2,3,5,8,13,... auf der Konsole mit console.log() aus.
+        Achten Sie auf Performanz: Berechnen Sie jeden Fibonacci-Wert nur einmal. Speichern Sie zu diesem Zweck jede bereits berechnete Fibonacci-Zahl in einer Tabelle.
+    </h2>
+    <h2 class="answer">
+        <pre>
+        const anzahl = parseInt(prompt('Geben Sie die Anzahl der Fibonacci-Folge '));
+        let erg = "";
+        let zahl1 = 0;
+        let zahl2 = 1;
+        let dieNaechste;
+        for (let i = 1; i <= anzahl; i++) {
+            erg+= zahl1 + ",";
+            dieNaechste = zahl1 + zahl2;
+            zahl1 = zahl2;
+            zahl2 = dieNaechste;
+        }
+        erg = erg.substring(0, erg.length -1); 
+        console.log(erg);
+
+        </pre>
+    </h2>
+    <h2 class="question">
+        Was ist die größte Fibonacci-Zahl, die sich noch als Integer sicher speichern lässt (Number.MAX_SAFE_INTEGER)? Die wievielte Fibonacci-Zahl in der Fibonacci-Folge ist das?
+    </h2>
+    <h2 class="answer">
+        <pre>    
+        1) 8944394323791464
+        2) die 78-te Fibonacci-Zahl
+        </pre>
+    </h2>
+    <h2 class="question">
+        Was ist die größte Fibonacci-Zahl, die sich noch als Number speichern lässt (Number.MAX_VALUE)? Die wievielte Fibonacci-Zahl in der Fibonacci-Folge ist das (d.h. welche Stelle in der Fibonacci-Folge)?
+    </h2>
+    <h2 class="answer">
+        <pre>    
+        1) 1.3069892237633987e+308
+        2) die 1476-te Fibonacci-Zahl
+        </pre>
+    </h2>
+    <h2 class="question">
+        Wechseln Sie zu BigInt, um alle 2000 Fibonacci-Zahlen korrekt anzuzeigen. Geben Sie hier HTML- und JavaScript-Code zusammen ein:
+    </h2>
+    <h2 class="answer">
+        <pre>    
+        const number = parseInt(prompt('Geben Sie die Anzahl der Fibonacci-Folge'));
+        let zahl1 = 0;
+        let zahl2 = 1;
+        let dieNaechste;
+        for (let i = 1; i <= number; i++) {
+            console.log(BigInt(zahl1));
+            dieNaechste = BigInt(zahl1 + zahl2);
+            zahl1 = BigInt(zahl2);
+            zahl2 = BigInt(dieNaechste);
+        }
+        </pre>
+    </h2>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        table{
+            border-style: double;
+            width: 100%;
+        }
+        th, td{
+            border: 1px solid black;
+            box-shadow: 0 1px 1px black;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="../AppExercise/AppExercise.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 5.1 Performanzmessungen von DOM-Operationen</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_5_2.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_5_1.html">5.1 Performanzmessungen von DOM-Operationen</a>
+            <a href="./Exercise_5_2.html">5.2 Rednerliste mit Zeitmessung</a>
+            </div>
+        </div>
+    </div>
+    <h2 class="question">
+        Implementieren Sie Performanzmessungen zum Vergleich von innerHTML, innerText, textContent und outerHTML selbstständig in JavaScript durch Nutzung der DOM API. Geben Sie die Messergebnisse als Tabelle aus. Verwenden Sie die eingebauten Zeitmess-Funktionen performance.now (), siehe auch When-milliseconds-are-not-enough-performance-now. Suchen Sie eine möglichst kurze und elegante Lösung.
+        Dabei ist zu beachten, dass Browser, um potenzielle Sicherheitsbedrohungen wie Spectre oder Meltdown zu minimieren, den zurückgegebenen Wert normalerweise um einen bestimmten Betrag runden. Dies führt zu einer gewissen Ungenauigkeit. Beispielsweise rundet Firefox die zurückgegebene Zeit in Schritten von 1 Millisekunde. Diese Zwangsrundung kann man jedoch wiederum abschalten mittels Firefox setting privacy.reduceTimerPrecision, siehe How to get microsecond timings in JavaScript since Spectre and Meltdown.
+    </h2>
+    <div>
+        <table>
+            <tr>
+            <th>innerHTML</th>
+            <th>innerText</th>
+            <th>textContent</th>
+            <th>outerHTML</th>
+            </tr>
+            <tr>
+            <td><p id="zm1"></p></td>
+            <td><p id="zm2"></p></td>
+            <td><p id="zm3"></p></td>
+            <td><p id="zm4"></p></td>
+            </tr>
+        </table>
+            <p id="Test"></p>
+
+    </div>
+    <script>
+
+        const test = document.getElementById("Test");
+        
+        const t1_f_ih = performance.now();
+        test.innerHTML = "innerHTML";
+        const t2_f_ih = performance.now();
+        document.getElementById("zm1").innerHTML = t2_f_ih-t1_f_ih;
+        
+        const t1_f_it = performance.now();
+        test.innerText = "innerText";
+        const t2_f_it = performance.now();
+        document.getElementById("zm2").innerHTML = t2_f_it-t1_f_it ;
+        
+        const t1_f_tc = performance.now();
+        test.textContent= "textContent";
+        const t2_f_tc = performance.now();
+        document.getElementById("zm3").innerHTML = t2_f_tc-t1_f_tc;
+        
+        const t1_f_ot = performance.now();
+        test.outerHTML= "        ";
+        const t2_f_ot = performance.now();
+        document.getElementById("zm4").innerHTML = t2_f_ot-t1_f_ot;
+          
+    </script> 
+
+    <h2 class="answer">
+        <pre>
+        Code in JS:
+        const test = document.getElementById("Test");
+        
+        const t1_f_ih = performance.now();
+        test.innerHTML = "innerHTML";
+        const t2_f_ih = performance.now();
+        document.getElementById("zm1").innerHTML = t2_f_ih-t1_f_ih;
+        
+        const t1_f_it = performance.now();
+        test.innerText = "innerText";
+        const t2_f_it = performance.now();
+        document.getElementById("zm2").innerHTML = t2_f_it-t1_f_it ;
+        
+        const t1_f_tc = performance.now();
+        test.textContent= "textContent";
+        const t2_f_tc = performance.now();
+        document.getElementById("zm3").innerHTML = t2_f_tc-t1_f_tc;
+        
+        const t1_f_ot = performance.now();
+        test.outerHTML= "Die Zeiten";
+        const t2_f_ot = performance.now();
+        document.getElementById("zm4").innerHTML = t2_f_ot-t1_f_ot;   
+        </pre>
+    </h2>
+</body>
+</html>

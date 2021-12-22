@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung</title>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="../AppExercise/AppExercise.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 4.1 Funktionen</h3>
+        </div>
+        <div id="rechts">
+            <a href="./Exercise_4_2.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+                <div class="Index" style="right:0;">
+                    <a href="./Exercise_4_1.html">4.1 Funktionen</a>
+                    <a href="./Exercise_4_2.html">4.2 Objekte</a>
+                    <a href="./Exercise_4_3.html">4.3 Fibonacci</a>
+                    <a href="./Exercise_4_4.html">4.4 Topsort</a>
+                    </div>
+                </a>
+        </div>
+    </div>
+
+    <div class="Loesung">
+        <h2 class="question">
+            1) Schreiben Sie eine Funktion identity(), die ein Argument als Parameter entgegen nimmt und dieses als Ergebnis zurück gibt.
+        </h2>
+        <h2 class="answer">
+            function identity(value){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return value;<br>
+            } <br>
+            Beispiel: identity(10); //10
+        </h2>
+        <h2 class="question">
+            2) Schreiben Sie eine Funktion identity_function(), die ein Argument als Parameter entgegen nimmt und eine Funktion zurück gibt, die dieses Argument zurück gibt.
+        </h2>
+        <h2 class="answer">
+            function identity_function(value_a){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; var myFunction = function identity(x){&nbsp;return x;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; return myFunction(value_a); <br>
+            } <br>
+            Beispiel: identity_function(10) //10
+        </h2>
+        <h2 class="question">
+            3) Schreiben Sie zwei binäre Funktionen add und mul, die Summe und Produkt berechnen.
+        </h2>
+        <h2 class="answer">
+            function add(a,b) { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return a+b;<br>
+            }<br>
+            Beispiel: add(5,5) //10 <br>
+            <br>
+            function mul(c,d) { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return c*d; <br>
+            }<br>
+            Beispiel: mul(2,5) //10 
+
+        </h2>
+        <h2 class="question">
+            4) Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x + y zurück gibt. (Es haben also zwei Funktionsaufrufe zu erfolgen. addf(x) liefert eine Funktion, die auf y angewandt wird.)
+        <h2 class="answer">
+            function addf(x){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;var addy = function(y){&nbsp;return x + y;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return addy; <br>
+            } <br>
+            Beispiel: addf(10)(2); //12 
+        </h2>
+        <h2 class="question">
+            5) Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion wie add(x,y) eine Funktion addf berechnet, die mit zwei Aufrufen das gleiche Ergebnis liefert, z.B. addf = applyf(add); addf(x)(y) soll add(x,y) liefern. Entsprechend applyf(mul)(5)(6) soll 30 liefern, wenn mul die binäre Multiplikation ist.
+        </h2>
+        <h2 class="answer">
+            function applyf(funktion){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;var erg = function(x){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return function(y){ return funktion(x,y)}; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return erg; <br>
+            } <br>
+            <br>
+            Beispiel: <br>
+            function add(a,b) { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return a+b;<br>
+            }<br>
+            addf = applyf(add); <br>
+            add(10,2); //12 <br>
+            addf(10,2); //12
+        </h2>
+    </div>
+</body>
+</html>

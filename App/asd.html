@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<ul id="myList">
+
+</ul>
+
+<p>Click the button to append an item to the end of the list.</p>
+
+<button onclick="myFunction()">Try it</button>
+<button onclick="myFun()">Try it</button>
+
+<script>
+function myFunction() {
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode("my.value");
+    var my = document.createElement("BUTTON");
+    my.innerHTML = "STOP";
+
+    my.addEventListener("click", ()=>{
+        if(my.innerHTML === "STOP"){
+            my.innerHTML = "START";
+        }else{
+            my.innerHTML = "STOP";
+        }
+        });
+
+    node.appendChild(textnode);
+    node.appendChild(my);
+
+
+    document.getElementById("myList").appendChild(node);
+}
+
+</script>
+
+
+
+</body>
+</html>
