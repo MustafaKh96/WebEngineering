@@ -1,78 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-
-</style>
+    <meta charset="UTF-8">
+    <title>Übung 6.1</title>
 </head>
 <body>
-    <h1>Rednerliste</h1>
-    <label for="fname">Neuer Redner: </label>
-    <input type="text" id="rednername">       
-    <button id="hinzufuegen">Hinzufügen</button>
-    <ul id="myList"></ul>
-    </body>
+
+<h1>Übung 6.1</h1>
+
+<form >
+    <label for="textField">Eingabe: </label>
+    <input type="text" id="textField" name="textField" onkeyup="checkParantheses()" style="background-color: greenyellow">
+</form>
 
 
-    <script>
 
-        function myFunction() {
-            var textinput = document.getElementById("rednername").value;
-            var node = document.createElement("LI");
-            var myButton = document.createElement("BUTTON");
-            myButton.innerHTML = "STOP";
-            var smhTime = function(t){
-                if (t < 10) {
-                    t = "0" + t;
-                }
-                return t;
-            }
-            var s = 0;
-            var m = 0;
-            var h = 0;
-            var myTimer = function () {                
-                if(s > 59){
-                    s = 0;
-                    m++;
-                }
-                else if(m > 60){
-                    m = 0;
-                    h++; 
-                }           
-                node.textContent = textinput + " "+ smhTime(h) + ":"+ smhTime(m) + ":" + smhTime(s++)+ " " ;
-                node.appendChild(myButton);
-            }
-                   
-            if(textinput != ""){              
-                let dieZeit = setInterval(myTimer, 1000);
-                z = 0;    
-                myButton.addEventListener("click", ()=>{
-                    if(z == 0){
-                        z = z + 1;                       
-                        myButton.className = "asd";
-                    }
-                    else{
-                        t = document.getElementsByClassName("asd");
-                        t.myButton.innerHTML = "STOP";
 
-                        
-                    }
-                    if(myButton.innerHTML === "STOP"){
-                        clearInterval(dieZeit);
-                        myButton.innerHTML = "START";
-                    }else{
-                        dieZeit = setInterval(myTimer, 1000);
-                        
-                    }
-                    });
+<script>
+    //Beispiele für richtig
+    console.assert(paranthesesClosed("()"));
+    console.assert(paranthesesClosed("({Hallo})"));
+    console.assert(paranthesesClosed("({{ssss}})"));
+    console.assert(paranthesesClosed("([])"));
 
-                document.getElementById("myList").appendChild(node);
-                                            
+    //Beispiele für falsch
+    console.assert(!paranthesesClosed("([fal}])"));
+    console.assert(!paranthesesClosed("([]})"));
+    console.assert(!paranthesesClosed("({[])"));
+
+    function checkParantheses() {
+        const textField = document.getElementById("textField");
+        const actText = textField.value;
+        if(paranthesesClosed(actText)){
+            textField.style.backgroundColor = "greenyellow";
+        } else{
+            textField.style.backgroundColor = "lightcoral";
+        }
+    }
+
+    function paranthesesClosed(str) {
+        let stack = [];
+        for(let i = 0; i < str.length; ++i){
+            const top = stack[stack.length - 1];
+            const actChar = str[i];
+            if(actChar == "(" || actChar == "{" || actChar == "["){
+                stack.push(actChar);
+            } else if((top == "(" && actChar == ")") ||
+                      (top == "[" && actChar == "]") ||
+                      (top == "{" && actChar == "}")) {
+                stack.pop();
+            } else if (actChar == ")" || actChar == "}" || actChar == "]"){
+                return false;
             }
         }
-        const gg = document.getElementById("hinzufuegen");
-        gg.addEventListener("click",myFunction);
+        return stack.length ? false : true;
+    }
+</script>
 
-
-    </script> 
+</body>
 </html>

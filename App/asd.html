@@ -6,31 +6,28 @@
 
 </ul>
 
-<p>Click the button to append an item to the end of the list.</p>
+<p id="display"></p>
 
-<button onclick="myFunction()">Try it</button>
-<button onclick="myFun()">Try it</button>
 
 <script>
-function myFunction() {
-    var node = document.createElement("LI");
-    var textnode = document.createTextNode("my.value");
-    var my = document.createElement("BUTTON");
-    my.innerHTML = "STOP";
+    
+    document.getElementById("display").innerHTML = composeb(add,mul)(2,3,5);
 
-    my.addEventListener("click", ()=>{
-        if(my.innerHTML === "STOP"){
-            my.innerHTML = "START";
-        }else{
-            my.innerHTML = "STOP";
-        }
-        });
+function composeb(funktion1, funktion2){
+    var myFunktion = function(a,b,c) {
+        var myFunktion1 = funktion1(a,b);
+        var myFunktion2 = funktion2(myFunktion1,c);
+            return myFunktion2;
+     };
+     return myFunktion;
+}
 
-    node.appendChild(textnode);
-    node.appendChild(my);
+function add(a, b) {
+   return a + b;
+}
 
-
-    document.getElementById("myList").appendChild(node);
+function mul(a, b) {
+   return a * b;
 }
 
 </script>

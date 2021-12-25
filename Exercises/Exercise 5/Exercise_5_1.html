@@ -95,29 +95,29 @@
     </script> 
 
     <h2 class="answer">
-        <pre>
-        Code in JS:
-        const test = document.getElementById("Test");
-        
-        const t1_f_ih = performance.now();
-        test.innerHTML = "innerHTML";
-        const t2_f_ih = performance.now();
-        document.getElementById("zm1").innerHTML = t2_f_ih-t1_f_ih;
-        
-        const t1_f_it = performance.now();
-        test.innerText = "innerText";
-        const t2_f_it = performance.now();
-        document.getElementById("zm2").innerHTML = t2_f_it-t1_f_it ;
-        
-        const t1_f_tc = performance.now();
-        test.textContent= "textContent";
-        const t2_f_tc = performance.now();
-        document.getElementById("zm3").innerHTML = t2_f_tc-t1_f_tc;
-        
-        const t1_f_ot = performance.now();
-        test.outerHTML= "Die Zeiten";
-        const t2_f_ot = performance.now();
-        document.getElementById("zm4").innerHTML = t2_f_ot-t1_f_ot;   
+        <pre style="white-space: pre-wrap;">
+Code in JS:
+const test = document.getElementById("Test");
+
+const t1_f_ih = performance.now();
+test.innerHTML = "innerHTML";
+const t2_f_ih = performance.now();
+document.getElementById("zm1").innerHTML = t2_f_ih-t1_f_ih;
+
+const t1_f_it = performance.now();
+test.innerText = "innerText";
+const t2_f_it = performance.now();
+document.getElementById("zm2").innerHTML = t2_f_it-t1_f_it ;
+
+const t1_f_tc = performance.now();
+test.textContent= "textContent";
+const t2_f_tc = performance.now();
+document.getElementById("zm3").innerHTML = t2_f_tc-t1_f_tc;
+
+const t1_f_ot = performance.now();
+test.outerHTML= "Die Zeiten";
+const t2_f_ot = performance.now();
+document.getElementById("zm4").innerHTML = t2_f_ot-t1_f_ot;   
         </pre>
     </h2>
 </body>

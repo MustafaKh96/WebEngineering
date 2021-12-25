@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        table{
+            border-style: double;
+            width: 100%;
+        }
+        th, td{
+            border: 1px solid black;
+            box-shadow: 0 1px 1px black;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="../AppExercise/AppExercise.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 7.1 Funktionen in JavaScript</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_7_2.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_7_1.html">7.1 Funktionen in JavaScript</a>
+            <a href="./Exercise_7_2.html">7.2 Textanalyse mit filter-map-reduce</a>
+            </div>
+        </div>
+    </div>
+    <h2 class="question">
+        Schreiben Sie eine Funktion identity_function(), die ein Argument als Parameter entgegennimmt und eine Funktion zurückgibt, die dieses Argument zurückgibt.
+    </h2>
+    <h2 class="answer">
+        <pre>
+    function identity_function(x){
+        var erg = function(){
+            return x;
+        };
+        return erg; 
+    }
+        </pre>
+    </h2>
+    <h2 class="question">
+        Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x + y zurück gibt. <br> (Es haben also zwei Funktionsaufrufe zu erfolgen. addf(x) liefert eine Funktion, die auf y angewandt wird.)
+    </h2>
+    <h2 class="answer">
+        <pre>
+    function addf(x){
+        var erg = function(y){
+                return x+y;
+            }; 
+            return erg;
+    }
+        </pre>
+    </h2>
+    <h2 class="question">
+        Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion wie add(x,y) eine Funktion addfberechnet, die mit zwei Aufrufen das gleiche Ergebnis liefert, z.B. addf = applyf(add); addf(x)(y) soll add(x,y) liefern. <br> Entsprechend applyf(mul)(5)(6) soll 30 liefern, wenn mul die binäre Multiplikation ist.
+    </h2>
+    <h2 class="answer">
+        <pre>
+    function applyf(funktion){
+        return function(x) {
+            return function(y) {
+                return funktion(x, y);
+            };
+        };
+    }
+
+    function mul(x, y) {
+        return x * y;
+    }
+    function add(x, y) {
+        return x + y;
+    }
+        </pre>
+    </h2>
+    <h2 class="question">
+        Schreiben Sie eine Funktion curry() (von Currying), die eine binäre Funktion und ein Argument nimmt, um daraus eine Funktion zu erzeugen, die ein zweites Argument entgegen nimmt, z.B. add3 = curry(add, 3);add3(4) ergibt 7. curry(mul, 5)(6) ergibt 30.
+    </h2>
+    <h2 class="answer">
+        <pre>
+    function curry(funktion,x){
+        return function(y){
+            return funktion(x,y);
+        };
+    }
+        </pre>
+    </h2>
+    <h2 class="question">
+        Erzeugen Sie die inc-Funktion mit Hilfe einer der Funktionen addf, applyf und curry aus den letzten Aufgaben, ohne die Funktion inc() selbst zu implementieren. <br> (inc(x) soll immer x + 1 ergeben und lässt sich natürlich auch direkt implementieren. Das ist aber hier nicht die Aufgabe.) Vielleicht schaffen Sie es auch, drei Varianten der inc()-Implementierung zu schreiben?
+    </h2>
+    <h2 class="answer">
+        <pre>
+    function inc(x){
+        return applyf(add)(x)(1);
+    }
+        </pre>
+    </h2>
+    <h2 class="question">
+        Schreiben Sie eine Funktion methodize(), die eine binäre Funktion (z.B. add, mul) in eine unäre Methode verwandelt. Nach Number.prototype. <br> add = methodize(add); soll (3).add(4) genau 7 ergeben.
+    </h2>
+    <h2 class="answer">
+        <pre>
+    function methodize(funktion){
+        var myFunktion = function(b) {
+                return funktion(this,b);
+        };
+    return myFunktion;
+    }
+
+    function mul(x, y) {
+        return x * y;
+    }
+
+    Number.prototype.mul = methodize(mul);
+    console.log((2).mul(3)); // 6
+        </pre>
+    </h2>
+    <h2 class="question">
+        Schreiben Sie eine Funktion demethodize(), die eine unäre Methode (z.B. add, mul) in eine binäre Funktion umwandelt. demethodize(Number.prototype.add)(5, 6) s
+    </h2>
+    <h2 class="answer">
+        <pre>
+    ar add = Number.prototype.add = function(y) {
+        return this.valueOf() + y ;
+        };
+        console.log((2).add(8)); // 10
+
+    function demethodize(funktion){
+        var myFunktion = function(a,b){
+            return funktion.call(a,b);
+        };
+        return myFunktion;
+    }
+
+    var add = demethodize(add);
+    console.log(add(1,2)); // 3
+        </pre>
+    </h2>
+
+    <h2 class="question">
+        Schreiben Sie eine Funktion twice(), die eine binäre Funktion in eine unäre Funktion umwandelt, die den einen Parameter zweimal weiter reicht. <br> Z.B. var double = twice(add); double(11) soll 22 ergeben; var square = twice(mul); square(11) soll mul(11,11) === 121 ergeben.
+    </h2>
+
+    <h2 class="answer">
+        <pre>
+    
+    function add(x,y){
+        return x + y;
+    }
+
+    function twice(funktion){
+        var myFunktion = function(a) {
+            return funktion(a,a);
+        };
+        return myFunktion;
+    }
+
+    console.log(twice(add)(11)); // 22
+        </pre>
+    </h2>
+
+
+    <h2 class="question">
+        Schreiben Sie eine Funktion composeu(), die zwei unäre Funktionen in eine einzelne unäre Funktion transformiert, die beide nacheinander aufruft, z.B. soll composeu(double, square)(3) genau 36 ergeben.
+    </h2>
+
+    <h2 class="answer">
+        <pre> 
+    function composeu(funktion1, funktion2){
+        var myFunktion = function(a) {
+                var myFunktion1 = funktion1(a);
+                return funktion2(myFunktion1);
+            };
+        return myFunktion;
+    }
+        </pre>
+    </h2>
+
+    <h2 class="question">
+        Schreiben Sie eine Funktion composeb(), die zwei binäre Funktionen in eine einzelne Funktion transformiert, die beide nacheinander aufruft, z.B. composeb(add, mul)(2, 3, 5) soll 25 ergeben.
+    </h2>
+    <h2 class="answer">
+        <pre> 
+    dfunction composeb(funktion1, funktion2){
+        var myFunktion = function(a,b,c) {
+            var myFunktion1 = funktion1(a,b);
+            var myFunktion2 = funktion2(myFunktion1,c);
+                return myFunktion2;
+            };
+            return myFunktion;
+    }
+        </pre>
+    </h2>
+    <h2 class="question">
+        Schreiben Sie eine Funktion once(), die einer anderen Funktion nur einmal erlaubt, aufgerufen zu werden, z.B. add_once = once(add); add_once(3, 4) soll beim ersten Mal 7 ergeben, beim zweiten Mal soll jedoch add_once(3, 4) einen Fehlerabbruch bewirken.
+    </h2>
+    <h2 class="answer">
+        <pre> 
+
+        </pre>
+    </h2>
+
+
+    <h2 class="question">
+        Schreiben Sie eine Fabrik-Funktion counterf(), die zwei Funktionen inc() und dec() berechnet, die einen Zähler hoch- und herunterzählen. Z.B. counter = counterf(10); Dann soll counter.inc() 11 und counter.dec() wieder 10 ergeben.
+    </h2>
+    
+    <h2 class="answer">
+        <pre> 
+
+        </pre>
+    </h2>
+
+    <h2 class="question">
+        Schreiben Sie eine rücknehmbare Funktion revocable(), die als Parameter eine Funktion nimmt und diese bei Aufruf ausführt. Sobald die Funktion aber mit revoke() zurück genommen wurde, führt ein erneuter Aufruf zu einem Fehler. Z.B. <br> <br>
+        temp = revocable(alert); <br>   
+        temp.invoke(7); // führt zu alert(7); <br>
+        temp.revoke(); <br>
+        temp.invoke(8); // Fehlerabbruch!
+    </h2>
+    <h2 class="answer">
+        <pre> 
+
+        </pre>
+    </h2>
+
+    <h2 class="question">
+        Implementieren Sie ein "Array Wrapper"-Objekt mit den Methoden get, store und append, so dass ein Angreifer keinen Zugriff auf das innere, private Array hat. <br> <br>
+        my_vector = vector(); <br>
+        my_vector.append(7); <br>
+        my_vector.store(1, 8); <br>
+        my_vector.get(0) // 7 <br>
+        my_vector.get(1) // 8 
+    </h2>
+    <h2 class="answer">
+        <pre> 
+
+        </pre>
+    </h2>
+
+
+
+</body>
+</html>
