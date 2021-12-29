@@ -1,38 +1,41 @@
-<!DOCTYPE html>
 <html>
 <body>
 
-<ul id="myList">
-
-</ul>
 
 <p id="display"></p>
 
 
 <script>
-    
-    document.getElementById("display").innerHTML = composeb(add,mul)(2,3,5);
-
-function composeb(funktion1, funktion2){
-    var myFunktion = function(a,b,c) {
-        var myFunktion1 = funktion1(a,b);
-        var myFunktion2 = funktion2(myFunktion1,c);
-            return myFunktion2;
-     };
-     return myFunktion;
+function vector(){
+    var myVector = [];
+    return {
+        append: function(a) {
+             myVector.push(a);
+         },
+         get: function(a) {
+             if(a < 0 || a >= myVector.length){
+                 throw('Fehler; Der Index ist falsch');
+             }
+             else{
+                return myVector[a];
+             }
+         },
+         store: function(a, neu) {
+             myVector[a] = neu;
+             return;
+         }
+    };
 }
+my_vector = vector();
+my_vector.append(7);
+my_vector.store(1, 8);
+my_vector.get(0) // 7
+my_vector.get(1) // 8
 
-function add(a, b) {
-   return a + b;
-}
+document.getElementById("display").innerHTML = my_vector.get(1);
+   
 
-function mul(a, b) {
-   return a * b;
-}
-
-</script>
-
-
+</script> 
 
 </body>
 </html>
