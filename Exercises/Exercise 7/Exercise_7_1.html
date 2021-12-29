@@ -216,10 +216,32 @@
     </h2>
     <h2 class="answer">
         <pre> 
+    function once(funktion){
+        var zaehler = [];
+        return function(a){
+            if(zaehler.length == 0){
+                zaehler.push(1);
+                return funktion(a);
+            }
+            else{
+                throw('Fehler; Die Funktion wurde schon einmal angerufen :(');
+            }
+        
+        }
+    }
 
+    function inc(a) {
+        a = a + 1;
+       return a;
+    }
+
+    var myFunktion = once(inc);
+    var a1 = myFunktion(10); 
+    console.log(a1) // 11
+    var a2 = myFunktion(20);
+    console.log(a2) // Fehler; Die Funktion wurde schon einmal angerufen :(
         </pre>
     </h2>
-
 
     <h2 class="question">
         Schreiben Sie eine Fabrik-Funktion counterf(), die zwei Funktionen inc() und dec() berechnet, die einen Zähler hoch- und herunterzählen. Z.B. counter = counterf(10); Dann soll counter.inc() 11 und counter.dec() wieder 10 ergeben.
@@ -227,7 +249,16 @@
     
     <h2 class="answer">
         <pre> 
-
+    function counterf(a){
+        return {
+            inc: function(){
+                return ++a;
+            },
+            dec: function(){
+                return --a;
+            }
+        };
+    }
         </pre>
     </h2>
 
@@ -240,7 +271,22 @@
     </h2>
     <h2 class="answer">
         <pre> 
-
+    function revocable(funktion){
+        var zaehler = [];
+        return {
+            invoke: function(a){
+                if(zaehler.length == 0){
+                    return funktion(a);
+                } else {
+                    throw('Fehler; Die Funktion wurde schon einmal angerufen :(');
+                    return;
+                }
+            },
+            revoke: function(){
+            zaehler.push(1); 
+            }
+        };
+    }
         </pre>
     </h2>
 
@@ -253,12 +299,30 @@
         my_vector.get(1) // 8 
     </h2>
     <h2 class="answer">
-        <pre> 
+        <pre>
+    function vector(){
+        var myVector = [];
+        return {
+            append: function(a) {
+                    myVector.push(a);
+                    },
+            get: function(a) {
+                    if(a < 0 || a >= myVector.length){
+                        throw('Fehler; Der Index ist falsch');
+                    }
+                    else{
+                    return myVector[a];
+                    }
+                },
+            store: function(a, neu) {
+                        myVector[a] = neu;
+                        return;
+                    }
+        };
+    }
 
         </pre>
     </h2>
-
-
 
 </body>
 </html>

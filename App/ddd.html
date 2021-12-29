@@ -1,36 +1,36 @@
 <html>
 <body>
 
-<button onClick="myTimer = setInterval(myCounter, 1000)">Start counter!</button>
 
-<p id="demo">Click on the button above and I will count foddrever.</p>
+<p id="display"></p>
 
-<button onClick="clearInterval(myTimer)">Stop counter!</button>
 
 <script>
 
-function smhTime(t){
-     if (t < 10) {t = "0" + t};
-     return t;
+const zaehler = []; 
+function once(funktion){ 
+     if(zaehler.length == 0){
+      zaehler.push(1);
+      return function(a,b){
+        return funktion(a,b)
+      };
+     }
+     else{
+       throw('Fehler');
+       return;
+     }
 }
 
-var s = 0;
-var m = 0;
-var h = 0;
-
-
-function myCounter() {
-
-  if(s > 59){
-  	s = 0;
-    m++;
-  }
-  else if(m > 60){
-  	m = 0;
-    h++; 
-  } 
-  document.getElementById("demo").innerHTML = smhTime(h) + ":"+ smhTime(m) + ":" + smhTime(s++);
+function add(a, b) {
+   return a + b;
 }
+
+var add_once = once(add);
+var add_once1 = add_once(3,4);
+var add_once1 = add_once(3,4);
+
+
+document.getElementById("display").innerHTML = add_once1;
 
 </script> 
 

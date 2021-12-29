@@ -17,44 +17,8 @@
 
 
 <script>
-    //Beispiele für richtig
-    console.assert(paranthesesClosed("()"));
-    console.assert(paranthesesClosed("({Hallo})"));
-    console.assert(paranthesesClosed("({{ssss}})"));
-    console.assert(paranthesesClosed("([])"));
+    
 
-    //Beispiele für falsch
-    console.assert(!paranthesesClosed("([fal}])"));
-    console.assert(!paranthesesClosed("([]})"));
-    console.assert(!paranthesesClosed("({[])"));
-
-    function checkParantheses() {
-        const textField = document.getElementById("textField");
-        const actText = textField.value;
-        if(paranthesesClosed(actText)){
-            textField.style.backgroundColor = "greenyellow";
-        } else{
-            textField.style.backgroundColor = "lightcoral";
-        }
-    }
-
-    function paranthesesClosed(str) {
-        let stack = [];
-        for(let i = 0; i < str.length; ++i){
-            const top = stack[stack.length - 1];
-            const actChar = str[i];
-            if(actChar == "(" || actChar == "{" || actChar == "["){
-                stack.push(actChar);
-            } else if((top == "(" && actChar == ")") ||
-                      (top == "[" && actChar == "]") ||
-                      (top == "{" && actChar == "}")) {
-                stack.pop();
-            } else if (actChar == ")" || actChar == "}" || actChar == "]"){
-                return false;
-            }
-        }
-        return stack.length ? false : true;
-    }
 </script>
 
 </body>
