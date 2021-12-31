@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <script>
+
+            function klammerpaare() {
+                let pairs = [];
+                var text = document.getElementById('input_field').value;
+                var klammertypen = [['{','}'], ['[',']'], ['(',')']];
+                for(let i = 0; i < text.length; i++) {
+                    //Equals Open Klammer
+                    for(let j = 0; j < klammertypen.length; j++) {
+                        if(text[i] === klammertypen[j][0]) {
+                            pairs.push(j);
+                             document.getElementById('input_field').style.color = "red";
+                        }
+                    }
+
+                    //Equals Closed Klammer
+                    for(let j = 0; j < klammertypen.length; j++) {
+                        if(text[i] === klammertypen[j][1]) {
+                            if(pairs.length === 0 || (pairs.length > 0 && j !== pairs.pop())) return document.getElementById('input_field').style.color = "red";
+                        }
+                    }
+                }
+
+                if(pairs.length > 0) return document.getElementById('input_field').style.color = "red";
+                
+                return document.getElementById('input_field').style.color = "black";
+            }
+
+            
+
+        </script>
+    </head>
+
+    <body>
+
+        <h1><u>Klammerpaare</u></h1>
+        <input type="text" id="input_field" onkeyup="klammerpaare()" style="width: 320px" placeholder="Enter string of random characters and symbols here...">
+
+    </body>
+</html>

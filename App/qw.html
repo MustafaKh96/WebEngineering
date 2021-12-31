@@ -19,11 +19,12 @@
 class Vorrang{
     constructor(relation){
         this.relation = relation;
-        this.order = [];
+        if(this.relation.length == 0){
+            throw('Ihre Relation ist leer :(');
+        }
+        else{
+            
 
-        // if relation is empty
-        if(Object.keys(this.relation).length === 0){
-        return;
         }
 
         let orderSet = new Set();
@@ -73,23 +74,6 @@ class Vorrang{
         }
         return order;
    }
-
-   
-
-
-
-   [Symbol.iterator]() {
-        const that = this;
-        let cursor = 0;
-        return {
-            next() {
-                return {
-                    value: that.order[cursor++],
-                    done: cursor > that.order.length
-                };
-            }
-        };
-    }
 }
 
 

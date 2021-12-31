@@ -49,6 +49,55 @@
             </div>
         </div>
     </div>
+    <h2 class="question">
+        Schreiben Sie eine ES6-Klasse Vorrang für Vorrangrelationen, z.B. new Vorrang([ ["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"] ]). Wählen Sie eine Implementierung, die universell gültig, also nicht nur für dieses Beispiel gilt. (Überlegen Sie sich, über welche Properties und Methoden eine solche Klasse verfügen sollte und wie TopSort hier hineinspielt. Topologische Iterierbarkeit und topologischer Generator sind jedoch Gegenstand der nächsten Übungen weiter unten auf diesem Übungsblatt und sollten für die folgenden Aufgaben aufgespart werden.) <br>
+        Stellen Sie bei Ihrer Klasse die topologische Iterierbarkeit her (zunächst über das Iterationsprotokoll, ohne Generator, ohne yield). <br>
+        Zum Beispiel soll dadurch folgende for ... of loop möglich werden, mit der die Elemente in topologischer Sortierung durchlaufen werden:
+    </h2>
+    <h2 class="answer">
+        <pre> 
+    class Vorrang{
+        constructor(relation){
+            this.relation = relation;
+            if(this.relation.length == 0){
+                throw('Ihre Relation ist leer :(');
+            }
+            else{
+                let erg = [];
+                for(const relation_x of this.relation){
+                    let zaehler1 = 0;
+                    while(zaehler1 < relation_x.length){
+                        erg.push(relation_x[zaehler1]);
+                        zaehler1 = zaehler1 + 1;
+                    }
+                }
+                //---------------------------------------------------
+                // Quelle: https://stackoverflow.com/questions/37365512/count-the-number-of-times-a-same-value-appears-in-a-javascript-array
+                const occurrencesOf = (number,numbers) => numbers.reduce((counter, currentNumber)=> (number === currentNumber ? counter+1 : counter),0);
+                //---------------------------------------------------
+                for(const wort_x of erg){
+                    if(occurrencesOf(wort_x, erg) > 1){
+                        erg.splice(erg.indexOf(wort_x), 1);
+                    }
+                }
+                return erg;  
+            }
+        }
+    }
+    
+    const testOrder = new Vorrang([["schlafen","studieren"], ["essen","studieren"],
+    ["studieren","prüfen"]]);
+    for(const erg of testOrder){
+        console.log(erg);
+    }
+    
+    Das Ergebnis ist:
+    //schlafen
+    //essen
+    //studieren
+    //prüfen
+        </pre>
+    </h2>
 
 </body>
 </html>

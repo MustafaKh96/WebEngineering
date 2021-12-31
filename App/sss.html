@@ -1,25 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Übung 6.1</title>
+<style>
+
+</style>
 </head>
 <body>
-
-<h1>Übung 6.1</h1>
-
-<form >
-    <label for="textField">Eingabe: </label>
-    <input type="text" id="textField" name="textField" onkeyup="checkParantheses()" style="background-color: greenyellow">
-</form>
-
+    <h1>Rednerliste</h1>
+    <label for="fname">Neuer Redner: </label>
+    <input type="text" id="rednername">       
+    <button id="hinzufuegen">Hinzufügen</button>
+    <ul id="myList"></ul>
+    </body>
 
 
+    <script>
 
-<script>
-    
+class Vorrang{
+    constructor(relation){
+        this.relation = relation;
+        if(this.relation.length == 0){
+            throw('Ihre Relation ist leer :(');
+        }
+        else{
+            let erg = [];
+            for(const relation_x of this.relation){
+                let zaehler1 = 0;
+                while(zaehler1 < relation_x.length){
+                    erg.push(relation_x[zaehler1]);
+                    zaehler1 = zaehler1 + 1;
+                }
+            }
+            //---------------------------------------------------
+            // Quelle: https://stackoverflow.com/questions/37365512/count-the-number-of-times-a-same-value-appears-in-a-javascript-array
+            const occurrencesOf = (number,numbers) => numbers.reduce((counter, currentNumber)=> (number === currentNumber ? counter+1 : counter),0);
+            //---------------------------------------------------
+            for(const wort_x of erg){
+                if(occurrencesOf(wort_x, erg) > 1){
+                    erg.splice(erg.indexOf(wort_x), 1);
+                }
+            }
+            return erg;  
+        }
+    }
+}
 
-</script>
+const testOrder = new Vorrang([["schlafen","studieren"], ["essen","studieren"],
+["studieren","prüfen"]]);
+for(const erg of testOrder){
+    console.log(erg);
+}
 
-</body>
+
+
+
+    </script> 
 </html>

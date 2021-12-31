@@ -49,6 +49,73 @@
             </div>
         </div>
     </div>
+    <h2 class="question">
+        Schreiben Sie eine Webseite, in die man eine Zeichenkette mit beliebigen Buchstaben, Zahlen und Sonderzeichen eingeben kann, die beliebig geschachtelte Klammern [...], (...) und {...} enthält, so dass sofort geprüft wird, ob alle Klammerpaare korrekt geschachtelt sind. Das Eingabefeld der Zeichenkette soll rot gefärbt werden, wenn es ein Klammerpaar gibt, das falsch geschachtelt ist.
+    </h2>
+    Schreiben Sie hier: <input type="text" id="myInput" onkeyup="myFunktion()">
+    <h2 class="answer">
+        <pre> 
+    function myFunktion() {
+        var zaehler = [];
+        var myInput = document.getElementById('myInput');
+        var myText = myInput.value;
+        var klmmer1 = ['{', '[', '('];
+        var klmmer2 = ['}', ']', ')'];
+        for(let a = 0; a < myText.length; a++) {
+            var b = 0;
+            while(b < 3){
+                if(myText[a] === klmmer1[b]) {
+                    myInput.style.backgroundColor = "red";
+                    zaehler.push(b);
+                }
+                if(myText[a] === klmmer2[b]) {
+                    if(zaehler.length === 0 || (zaehler.length > 0 && b !== zaehler.pop())){
+                        myInput.style.backgroundColor = "red";
+                    } 
+                }
+                b = b + 1;
+            }   
+        }
+        if(zaehler.length > 0){
+            myInput.style.backgroundColor = "red";
+        }
+        else{
+            myInput.style.backgroundColor = "white";
+        } 
+    }
+        </pre>
+    </h2>
+    <script>
+        function myFunktion() {
+                var zaehler = [];
+                var myInput = document.getElementById('myInput');
+                var myText = myInput.value;
+                var klmmer1 = ['{', '[', '('];
+                var klmmer2 = ['}', ']', ')'];
+                for(let a = 0; a < myText.length; a++) {
+                    var b = 0;
+                    while(b < 3){
+                        if(myText[a] === klmmer1[b]) {
+                            myInput.style.backgroundColor = "red";
+                            zaehler.push(b);
+                        }
+                        if(myText[a] === klmmer2[b]) {
+                            if(zaehler.length === 0 || (zaehler.length > 0 && b !== zaehler.pop())){
+                                myInput.style.backgroundColor = "red";
+                            } 
+                        }
+                        b = b + 1;
+                    }   
+                }
+                if(zaehler.length > 0){
+                    myInput.style.backgroundColor = "red";
+                }
+                else{
+                    myInput.style.backgroundColor = "white";
+                } 
+            }
+
+    </script>
 
 </body>
 </html>
