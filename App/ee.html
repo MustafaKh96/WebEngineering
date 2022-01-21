@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="dsplay"></p>
+</body>
+<script>
+     function print(string){
+     document.getElementById("dsplay").innerHTML = string;
+ }
+ 
+ function concatTexts(texts){
+ 
+     // Lines
+
+     let linesTextA = texts[0].length;
+     let linesTextB = texts[1].length;
+     let linesMax = linesTextA;
+     if (linesTextB > linesTextA) linesMax = linesTextB;
+ 
+     // Concat lines
+
+     let concatedText = "";
+     let i = 0;
+     for (; i<linesMax ; i++) {
+
+         if((i >= linesTextA) || (i >= linesTextB)) {
+             if(i >= linesTextA){
+                 concatedText += texts[1][i] + "\n";
+             } else {
+                 concatedText += texts[0][i] + "\n";
+             }
+         } else {
+             concatedText += texts[0][i] + texts[1][i] + "\n";
+         }
+     }
+ 
+     return concatedText;
+ }
+ async function fetchText(file) {
+     let response;
+     let text;
+     try{
+         response = await fetch(file);
+         text = await response.text();
+         text = await text.split("\n");
+     } catch(error) {
+         console.log(error);
+     }
+     return text;
+ }
+ 
+ async function fetchandConcat(){
+ 
+     let textA = fetchText("./A");
+     let textB = fetchText("./B");
+     await Promise.all([textA,textB])
+     .then(values => concatTexts(values))
+     .then(concatedText => print(concatedText));
+ }
+ 
+ fetchandConcat();
+</script>
+</html>

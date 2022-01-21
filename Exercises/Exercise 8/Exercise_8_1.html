@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="../AppExercise/AppExercise.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 8.1 Promises</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_8_2.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_8_1.html">8.1 Promises</a>
+            <a href="./Exercise_8_2.html">8.2 async / await</a>
+            <a href="./Exercise_8_3.html">8.3 WWW-Navigator</a>
+            </div>
+        </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Erstellen Sie auf Ihrem Server www2.inf.h-brs.de (oder localhost) zwei Text-Dateien A.txt und B.txt mit ungefähr gleich vielen Zeilen. Laden Sie mit der fetch-API parallel beide Text-Dateien vom Server. Geben Sie auf einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der Anfang der Zeile aus A.txt und das Ende aus B.txt stammen soll. <br> Die beiden Dateien sollen also zeilenweise konkateniert werden. Erzielen Sie max. Geschwindigkeit durch maximale Parallelität. Achten Sie gleichzeitig auf Korrektheit. Verwenden Sie dabei ausschließlich die Promise API ohne async / await.
+        </h2>
+        <h2 class="answer">
+            <pre>
+            let textA = fetch("./A")
+            .then(response => response.text())
+            .then(textOfA => textOfA.split("\n"));
+    
+            let textB = fetch("./B")
+            .then(response => response.text())
+            .then(string => string.split("\n"));
+    
+    
+            Promise.all([textA,textB])
+            .then(function(myTexts){
+                let erg = "";
+                let z = 0;
+                while(z < myTexts[0].length){
+                erg+=myTexts[0][z];
+                erg+=myTexts[1][z];
+                erg+= "\n";
+                z++;
+                }
+                return erg;
+            })
+            .then(values => console.log(values));
+        </pre>
+        </h2>
+    </div>
+</body>
+</html>

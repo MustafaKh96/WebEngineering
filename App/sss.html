@@ -15,60 +15,73 @@
 
     <script>
 
-class Vorrang{
-    constructor(relation){
-        this.relation = relation;
-        if(this.relation.length == 0){
-            throw('Ihre Relation ist leer :(');
+class Vorrang {
+    constructor(args) {
+        this.relations = args
+        this.elements = new Set(this.relations.flat())
+        this.predecessors = new Object()
+
+        for (let element of this.elements) {
+            this.predecessors[element] = 0
         }
-        else{
-            var n = 0;
-            while(n < this.relation.length){
-                var wort1 = this.relation[n][0];
-                var rel_tmp = this.relation[n];
-                var z = 0;
-                while(z < this.relation.length){
-                    if(wort1 === this.relation[z][1]){
-                        var zz = 0;
-                        while(zz < rel_tmp.length){
-                            this.relation[z].push(rel_tmp[zz]);
-                            zz = zz + 1;
-                        }            
-                    }
-                    z = z + 1;
+
+        for (let entry of Object.entries(this.relations)) {
+            this.predecessors[entry[1][1]] += 1
+        }
+        
+        this.predecessors = Object.fromEntries(
+            Object.entries(this.predecessors).sort(([,a],[,b]) => a-b)
+        );
+
+        this.successors = new Map()
+
+        for (let element of this.elements) {
+            this.successors.set(element,[])
+        }
+
+        for (let entry of Object.entries(this.relations)) {
+            let x = this.successors.get(entry[1][0])
+            x.push(entry[1][1])
+            this.successors.set(entry[1][0],x)
+        }
+
+    }
+
+    [Symbol.iterator]() {
+        return {
+            next: () => {
+                if (Object.values(this.predecessors).includes(0)) {
+                    let result = undefined
+                    for (let [key,value] of Object.entries(this.predecessors)) {
+                        if (value == 0) {
+                            result = key
+                            delete this.predecessors[key]
+                            for (let element of this.successors.get(key)) {
+                                this.predecessors[element] -= 1
+                            }
+                            return {value: result, done: false}
+                        }
+                    }                
                 }
-                n = n + 1;
+                else {
+                    return {done: true}
+                } 
             }
-            //console.log(this.relation);
-            let erg = [];
-            for(const relation_x of this.relation){
-                let zaehler1 = 0;
-                while(zaehler1 < relation_x.length){
-                    erg.push(relation_x[zaehler1]);
-                    zaehler1 = zaehler1 + 1;
-                }
-            }
-            //---------------------------------------------------
-            // Quelle: https://stackoverflow.com/questions/37365512/count-the-number-of-times-a-same-value-appears-in-a-javascript-array
-            const occurrencesOf = (number,numbers) => numbers.reduce((counter, currentNumber)=> (number === currentNumber ? counter+1 : counter),0);
-            //---------------------------------------------------
-            var t = 0;
-            while(t < 2){
-                for(const wort_x of erg){
-                if(occurrencesOf(wort_x, erg) > 1){
-                    erg.splice(erg.indexOf(wort_x), 1);
-                }
-                }
-                t = t + 1;
-            }
-            return erg;  
-        }   
+        }
     }
 }
 
 
-const test1 = new Vorrang([["studieren","prüfen"],["schlafen","studieren"], ["essen","studieren"]]);
-const test2 = new Vorrang([["essen","rauchen"],["schlafen","essen"],["rauchen","lernen"]]);
+const test1 = new Vorrang([  ["b", "z"],["a", "z"],["schlafen", "studieren"]  ])
+const test2 = new Vorrang([])
+const test3 = new Vorrang([["unterhose","hose"], ["shirt", "jacke"], ["socken", "schuhe"], ["socken", "hose"], ["hose", "jacke"], ["hose", "schuhe"]])
+const test4 = new Vorrang([["blitz", "donner"], ["regen", "traufe"]])
+const test5 = new Vorrang([['huhn', 'ei'], ['ei','huhn']])
+
+//const test1 = new Vorrang([["studieren","prüfen"], ["schlafen","studieren"], ["essen","studieren"]]);
+//const test2 = new Vorrang([["essen","rauchen"],["schlafen","essen"],["rauchen","lernen"]]);
+console.log(test1);
+
 for(const erg of test1){
     console.log(erg);
 }

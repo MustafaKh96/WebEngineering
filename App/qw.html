@@ -15,16 +15,6 @@
 
     <script>
 
-class Vorrang{
-
-  constructor()
-
-
-
-
-
-}
-
 
 function topsort(edges) {
   var nodes   = {}, // hash: stringified id of the node => { id: id, afters: lisf of ids }
@@ -73,8 +63,8 @@ function topsort(edges) {
 
 
 
-const test1 = topsort([["studieren","prüfen"], ["essen","studieren"],["schlafen","studieren"]]);
-const test2 = topsort([["laufen","lernen"],["trinken","essen"],["essen","laufen"],["aufstehen","trinken"]]);
+const test1 = topsort([ ["A","C"],["B","C"], ["A","F"]]);
+const test2 = topsort([["studieren","prüfen"],["schlafen","studieren"], ["essen","studieren"]]);
 console.log(test1);
 console.log(test2);
 

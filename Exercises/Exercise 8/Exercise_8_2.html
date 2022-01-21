@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_8_1.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3> 8.2 async / await</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_8_3.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+                <a href="./Exercise_8_1.html">8.1 Promises</a>
+                <a href="./Exercise_8_2.html">8.2 async / await</a>
+                <a href="./Exercise_8_3.html">8.3 WWW-Navigator</a>
+            </div>
+        </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Lösen Sie die letzte Aufgabe mit async / await statt Promise.
+        </h2>
+        <h2 class="answer">
+            <pre>
+                async function myFunction() {
+                    let responseA = await fetch("./A");
+                    let textA = await responseA.text();
+                    textA = await textA.split("\n");
+        
+                    let responseB = await fetch("./B");
+                    let textB = await responseB.text();
+                    textB = await textB.split("\n");
+        
+                
+                    await Promise.all([textA,textB])
+                    .then(function(myTexts){
+                    let erg = "";
+                    let z = 0;
+                    while(z < myTexts[0].length){
+                        erg+=myTexts[0][z];
+                        erg+=myTexts[1][z];
+                        erg+= "\n";
+                        z++;
+                    }
+                        return erg;
+                    })
+                    .then(values => console.log(values));
+                }
+                myFunction();
+        </pre>
+        </h2>
+    </div>
+</body>
+</html>

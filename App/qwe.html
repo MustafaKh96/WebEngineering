@@ -67,6 +67,7 @@
         if(relation.length == 0){
                 throw('Ihre Relation ist leer :(');
         }
+
         else{
                 var n = 0;
                 while(n < relation.length){
@@ -85,6 +86,7 @@
                     }
                     n = n + 1;
                 }
+
                 let erg = [];
                 for(const relation_x of relation){
                     let zaehler1 = 0;
@@ -98,7 +100,8 @@
                 // Quelle: https://stackoverflow.com/questions/37365512/count-the-number-of-times-a-same-value-appears-in-a-javascript-array
                 const occurrencesOf = (number,numbers) => numbers.reduce((counter, currentNumber)=> 
                 (number === currentNumber ? counter+1 : counter),0);
-                //--------------------------------------------------- 
+                //---------------------------------------------------
+                
                 var t = 0;
                 while(t < 2){
                     for(const wort_x of erg){
@@ -108,25 +111,7 @@
                     }
                     t = t + 1;
                 }
-                var e = 0;
-                let z12 = [];
-                while(e < erg.length){
-                    for(const rel of relation){
-                        if(erg[e] === rel[1]){
-                            var ind = erg.indexOf(erg[e]);
-                            while(ind < erg.length){
-                                if(rel[0] === erg[ind]){
-                                    var tmp;
-                                    tmp = erg[e];
-                                    erg[e] = erg[ind];
-                                    erg[ind] = tmp;
-                                }
-                                ind = ind + 1;
-                            }
-                        }
-                    }
-                    e = e + 1;     
-                }
+
                 return erg;  
         }   
     }
@@ -139,8 +124,9 @@
 //const test1 = new Vorrang([["studieren","prüfen"],["schlafen","studieren"], ["essen","studieren"]]);
 //const test2 = new Vorrang([["essen","rauchen"],["schlafen","essen"],["rauchen","lernen"]]);
 
-const test1 = topsort([["schlafen","studieren"], ["essen","studieren"],["studieren","prüfen"],]);
-const test2 = topsort([["B","C"], ["A","B"], ["A","F"]]);
+const test1 = topsort([["studieren","prüfen"],["schlafen","studieren"], ["essen","studieren"]]);
+
+const test2 = topsort([["A","C"],["B","C"], ["A","F"]]);
 for(const erg of test1){
 console.log(erg);
 }
