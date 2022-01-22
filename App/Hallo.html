@@ -1,21 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Übung 9.2</title>
+    <style>
+        #data line {
+            stroke-dasharray: 1500; 
+            stroke-dashoffset: 1500;
+            animation: draw 4s ease-out forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
 </head>
-<style>
-
-</style>
 <body>
-    
-    <h1 id="h"></h1>
+    <svg width="1500" height="720">
+        <rect width="1500" height="720" fill="white" stroke="black"/>
+        <text x="750" y="50" text-anchor="middle" font-size="2em" font-family="sans-serif">Covid-19 Infektionen nach Bundesland (in Millionen)</text>
+        <g id="y-axis" font-family="sans-serif" fill="black" transform="translate(200 120)" text-anchor="end">
+        </g>
+        <g id="x-axis" font-family="sans-serif" font-size="0.75em" transform="translate(210 90)" text-anchor="middle">
+            <line x1="0" y1="0" x2="0" y2="590" style="stroke:rgb(65, 6, 202);stroke-width:0.5"/>
+            <text x="0" y="610">0</text>
+            <line x1="100" y1="0" x2="100" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="100" y="610">0.1</text>
+            <line x1="200" y1="0" x2="200" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="200" y="610">0.2</text>
+            <line x1="300" y1="0" x2="300" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="300" y="610">0.3</text>
+            <line x1="400" y1="0" x2="400" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="400" y="610">0.4</text>
+            <line x1="500" y1="0" x2="500" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="500" y="610">0.5</text>
+            <line x1="600" y1="0" x2="600" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="600" y="610">0.6</text>
+            <line x1="700" y1="0" x2="700" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="700" y="610">0.7</text>
+            <line x1="800" y1="0" x2="800" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="800" y="610">0.8</text>
+            <line x1="900" y1="0" x2="900" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="900" y="610">0.9</text>
+            <line x1="1000" y1="0" x2="1000" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="1000" y="610">1</text>
+            <line x1="1100" y1="0" x2="1100" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="1100" y="610">1.1</text>
+            <line x1="1200" y1="0" x2="1200" y2="590" style="stroke:#aaa;stroke-width:0.5"/>
+            <text x="1200" y="610">1.2</text>
+        </g>
+        <g id="data" transform="translate(210 90)" style="stroke: red;stroke-width:5">
+        </g>
+    </svg>
+    <script>
+        const data = {
+            'Baden-Würtemberg': 857957,
+            'Bayern': 1167598,
+            'Berlin': 282068,
+            'Brandenburg': 168828,
+            'Bremen': 40308,
+            'Hamburg': 116140,
+            'Hessen': 422403,
+            'Mecklenburg-Vorpommern': 75321,
+            'Niedersachsen': 348998,
+            'Nordrhein-Westfalen': 1201564,
+            'Rheinland-Pfalz': 239998,
+            'Saarland': 63261,
+            'Sachsen': 524645,
+            'Sachsen-Anhalt': 166227,
+            'Schleswig-Holstein': 98841,
+            'Thüringen': 223403
+        }
+        const yAxis = document.querySelector('#y-axis')
+        const bars = document.querySelector('#data')
 
+        window.addEventListener('load', () => {
+            Object.entries(data).map(element => {generateGraphEntry(element[0]);generateBar(element[1])})
+        })
+
+
+        const generateGraphEntry = (value) => {
+            const lastChild = yAxis.lastElementChild
+
+            const textNode = document.createElementNS('http://www.w3.org/2000/svg','text')
+            const text = document.createTextNode(value)
+
+
+            if (lastChild) {
+                textNode.setAttribute('x', lastChild.attributes.x.value)
+                textNode.setAttribute('y', parseInt(lastChild.attributes.y.value) + 36)
+            }
+            else {
+                textNode.setAttribute('x', 0)
+                textNode.setAttribute('y', 0)
+            }
+
+            textNode.appendChild(text)
+            yAxis.appendChild(textNode)
+        }
+
+        const generateBar = (amount) => {
+            const lastChild = bars.lastElementChild
+
+            const lineElement = document.createElementNS('http://www.w3.org/2000/svg','line')
+            lineElement.className = 'animated'
+
+            lineElement.setAttribute('x1', 0)
+            lineElement.setAttribute('x2', Math.round(amount/1000))
+            lineElement.className.baseVal = 'animated'
+            
+            if (lastChild) {           
+                lineElement.setAttribute('y1', parseInt(lastChild.attributes.y1.value) + 36)
+                lineElement.setAttribute('y2', parseInt(lastChild.attributes.y2.value) + 36)
+            }
+            else {
+                lineElement.setAttribute('y1', 26)
+                lineElement.setAttribute('y2', 26)
+            }
+
+            bars.appendChild(lineElement)
+        }
+    </script>
 </body>
-<script>
-    document.getElementById("h").innerHTML = "hallo";
-    
-</script>
 </html>

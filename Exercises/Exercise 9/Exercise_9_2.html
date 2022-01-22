@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        #lo{
+            border: 2px solid black;
+            box-shadow: 0 0 1em black;
+            margin-top: 50px;
+            width: 100%;    
+        }
+        .line:hover{
+            stroke:steelblue;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_9_1.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3>9.2 Statistik-Balkendiagramm in SVG</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_9_3.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_9_1.html">9.1 SVG Grafik von Hand erstellen</a>
+            <a href="./Exercise_9_2.html">9.2 Statistik-Balkendiagramm in SVG</a>
+            <a href="./Exercise_9_3.html">9.3 Interaktive SVG Grafik</a>
+            </div>
+        </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Implementieren Sie ein eigenes Balkendiagramm mit HTML, Inline SVG, CSS und JavaScript. Geben Sie die Daten für das Balkendiagramm im JSON-Format vor. <br> Nehmen Sie als Beispieldaten die COVID-19: Fallzahlen in Deutschland. Animieren Sie die Grafik (siehe z.B. Highchart Bar Chart).
+        </h2>
+    <div id="lo">
+        <h2 style="margin-left: 20px;">ballon d'or winners:</h2>
+        <svg id="svg" viewbox="-800 10 1900 800">
+
+            <line x1="-60" y1="60" x2="-60" y2="530" stroke="black" stroke-width="2"/>
+    
+            <text x="-248" y="100" font-size="30">Lionel Messi</text>
+            <line class="line" x1="-60" y1="92" x2="700" y2="92" stroke="black" stroke-width="20"/>
+            <text id="txt1" x="710" y="100" font-size="27"></text>
+    
+            <text x="-310" y="180" font-size="30">Cristiano Ronaldo</text>
+            <line class="line" x1="-60" y1="170" x2="500" y2="170" stroke="black" stroke-width="20"/>
+            <text id="txt2" x="510" y="180" font-size="27"></text>
+    
+            <text class="line" x="-250" y="260" font-size="30">Johan Cruyff</text>
+            <line class="line" x1="-60" y1="248" x2="300" y2="248" stroke="black" stroke-width="20"/>
+            <text id="txt3" x="310" y="258" font-size="30"></text>
+    
+            <text x="-390" y="340" font-size="30">Karl Heinz Rummenigge</text>
+            <line class="line" x1="-60" y1="326" x2="200" y2="326" stroke="black" stroke-width="20"/>
+            <text id="txt4" x="210" y="336" font-size="30"></text>
+    
+            <text x="-260" y="420" font-size="30">Michel Platini</text>
+            <line class="line" x1="-60" y1="410" x2="300" y2="410" stroke="black" stroke-width="20"/>
+            <text id="txt5" x="310" y="420" font-size="30"></text>
+            
+            <text x="-320" y="500" font-size="30">Franz Beckenbauer</text>
+            <line class="line" x1="-60" y1="488" x2="200" y2="488" stroke="black" stroke-width="20"/>
+            <text id="txt6" x="210" y="500" font-size="30"></text>
+
+           
+
+
+        </svg>
+    </div>
+    </div>
+    <script>
+
+        const myJSON = '{"C_Ronaldo":5, "L_Messi":7, "Johan_Cruyff":3, "Karl_Heinz_Rummenigge":2, "Michel_Platini":3, "Franz_Beckenbauer":2}';
+        const myData = JSON.parse(myJSON);
+    
+        const txt1 = document.getElementById("txt1");
+        txt1.textContent = myData.L_Messi;
+    
+        const txt2 = document.getElementById("txt2");
+        txt2.textContent = myData.C_Ronaldo;
+    
+        const txt3 = document.getElementById("txt3");
+        txt3.textContent = myData.Johan_Cruyff;
+    
+        const txt4 = document.getElementById("txt4");
+        txt4.textContent = myData.Karl_Heinz_Rummenigge;
+    
+        const txt5 = document.getElementById("txt5");
+        txt5.textContent = myData.Michel_Platini;
+    
+        const txt6 = document.getElementById("txt6");
+        txt6.textContent = myData.Franz_Beckenbauer;
+        
+    </script>
+</body>

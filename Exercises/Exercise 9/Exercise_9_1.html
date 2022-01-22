@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        svg:hover {
+            transform: scale(2);
+        }
+        #lo{
+            border: 2px solid black;
+            box-shadow: 0 0 1em black;
+            width: 350px;    
+        }
+    </style>
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="../AppExercise/AppExercise.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3>9.1 SVG Grafik von Hand erstellen</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_9_2.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_9_1.html">9.1 SVG Grafik von Hand erstellen</a>
+            <a href="./Exercise_9_2.html">9.2 Statistik-Balkendiagramm in SVG</a>
+            <a href="./Exercise_9_3.html">9.3 Interaktive SVG Grafik</a>
+            </div>
+        </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Codieren Sie eine HTML-Datei mit Inline SVG, so dass sich folgendes Aussehen ergibt: <br>
+            Fügen Sie als Hover-Effekt eine CSS-Animation hinzu, die die Größe der SVG-Grafik verdoppelt, wenn man mit dem Cursor über die Grafik geht.
+        </h2>
+    <div id="lo">
+        <h3 style="margin-left: 20px;">SVG Use The Platform</h3>
+        <svg  height="400" width="350">
+            <rect height="250" width="250" x="50" y="50" fill="PaleVioletRed"></rect>
+            <text x="70" y="110" fill="white" style="font-size:50px">Use
+                <tspan x="70" y="180">The</tspan>
+                <tspan x="70" y="250">Platform</tspan>
+            </text>
+            <line x1="70" y1="125" x2="280" y2="125" stroke-width="3" style="stroke:white;"></line>
+            <line x1="70" y1="195" x2="280" y2="195" stroke-width="3" style="stroke:white;"></line>
+            <line x1="70" y1="265" x2="280" y2="265" stroke-width="3" style="stroke:white;"></line>
+        </svg>
+    </div>
+
+
+    </div>
+
+</body>

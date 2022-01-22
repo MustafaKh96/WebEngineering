@@ -6,64 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <p id="dsplay"></p>
+    <script>
+        var svgNS = "http://www.w3.org/2000/svg";
+        const myJSON = '{"Nordrhein-Westfalen":20.891, "Bayern":20.298, "Baden-Württemberg":13.517, "Sachsen":13.952, "Hessen":8.719, "Niedersachsen":7.047, "Berlin":4.082, "Rheinland-Pfalz":4.767, "Thüringen":6.341, "Brandenburg":4.962}';
+        const myObj = JSON.parse(myJSON);
+        const svg = document.querySelector("svg");
+
+      
+        let text1 =  document.createElementNS(svgNS, "text");
+        text1.textContent = myObj.Hessen;
+        console.log(text1);
+       // document.getElementById("chart").appendChild(text1);
+     
+
+        
+    </script>
+        <svg style="display:block; margin: auto auto auto auto;" viewBox="0 0 600 500" width="600" id="chart"> 
+            <text style="text-decoration: underline" >
+                <tspan x="200" y="60">Corona Fallzahlen Deutschland - 3.12.2021</tspan>
+                <tspan x="285" y="80">(7-Tage-Inzidenz)</tspan>
+            </text>
+        </svg>
+    
 </body>
-<script>
-     function print(string){
-     document.getElementById("dsplay").innerHTML = string;
- }
- 
- function concatTexts(texts){
- 
-     // Lines
 
-     let linesTextA = texts[0].length;
-     let linesTextB = texts[1].length;
-     let linesMax = linesTextA;
-     if (linesTextB > linesTextA) linesMax = linesTextB;
- 
-     // Concat lines
-
-     let concatedText = "";
-     let i = 0;
-     for (; i<linesMax ; i++) {
-
-         if((i >= linesTextA) || (i >= linesTextB)) {
-             if(i >= linesTextA){
-                 concatedText += texts[1][i] + "\n";
-             } else {
-                 concatedText += texts[0][i] + "\n";
-             }
-         } else {
-             concatedText += texts[0][i] + texts[1][i] + "\n";
-         }
-     }
- 
-     return concatedText;
- }
- async function fetchText(file) {
-     let response;
-     let text;
-     try{
-         response = await fetch(file);
-         text = await response.text();
-         text = await text.split("\n");
-     } catch(error) {
-         console.log(error);
-     }
-     return text;
- }
- 
- async function fetchandConcat(){
- 
-     let textA = fetchText("./A");
-     let textB = fetchText("./B");
-     await Promise.all([textA,textB])
-     .then(values => concatTexts(values))
-     .then(concatedText => print(concatedText));
- }
- 
- fetchandConcat();
-</script>
 </html>

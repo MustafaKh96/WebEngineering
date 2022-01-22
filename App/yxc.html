@@ -1,61 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="utf-8">
+	<title>Balkendiagramm</title>
+	
+	<style>
+		g > * {
+			fill: green;
+			stroke: green;
+		}
+		
+		g > line:hover {
+			stroke: lightgreen;
+		}
+	</style>
 </head>
 <body>
-    <p id="dsplay"></p>
+
+<svg
+	id="grafik"
+	viewbox="-500 0 2000 1700"
+	width="100%"
+	height="100%"
+	xmlns="http://www.w3.org/2000/svg">
+	
+	<rect x="-500" y="0" width="2000" height="1700" fill="lightgray"/>
+	
+	<line x1="-20" y1="50" x2="-20" y2="1650" stroke="black" stroke-width="2"/>
+	
+	<g id="Baden-Württemberg">
+		<text x="-370" y="100" font-size="40">Baden-Württemberg</text>
+		<text x="543" y="100" font-size="40">533</text>
+		<line x1="0" y1="90" x2="533" y2="90" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Bayern">
+		<text x="-160" y="200" font-size="40">Bayern</text>
+		<text x="536" y="200" font-size="40">526</text>
+		<line x1="0" y1="190" x2="526" y2="190" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Berlin">
+		<text x="-145" y="300" font-size="40">Berlin</text>
+		<text x="351" y="300" font-size="40">341</text>
+		<line x1="0" y1="290" x2="341" y2="290" stroke="black" stroke-width="48"/>
+	</g>
+	<g id=Branden­burg>
+		<text x="-255" y="400" font-size="40">Branden­burg</text>
+		<text x="653" y="400" font-size="40">643</text>
+		<line x1="0" y1="390" x2="643" y2="390" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Bremen">
+		<text x="-175" y="500" font-size="40">Bremen</text>
+		<text x="224" y="500" font-size="40">214</text>
+		<line x1="0" y1="490" x2="214" y2="490" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Hamburg">
+		<text x="-195" y="600" font-size="40">Hamburg</text>
+		<text x="234" y="600" font-size="40">224</text>
+		<line x1="0" y1="590" x2="224" y2="590" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Hessen">
+		<text x="-160" y="700" font-size="40">Hessen</text>
+		<text x="279" y="700" font-size="40">269</text>
+		<line x1="0" y1="690" x2="269" y2="690" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Mecklenburg-Vorpommern">
+		<text x="-480" y="800" font-size="40">Mecklenburg-Vorpommern</text>
+		<text x="450" y="800" font-size="40">440</text>
+		<line x1="0" y1="790" x2="440" y2="790" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Niedersachsen">
+		<text x="-275" y="900" font-size="40">Niedersachsen</text>
+		<text x="214" y="900" font-size="40">204</text>
+		<line x1="0" y1="890" x2="204" y2="890" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Nordrhein-Westfalen">
+		<text x="-380" y="1000" font-size="40">Nordrhein-Westfalen</text>
+		<text x="300" y="1000" font-size="40">290</text>
+		<line x1="0" y1="990" x2="290" y2="990" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Rheinland-Pfalz">
+		<text x="-305" y="1100" font-size="40">Rheinland-Pfalz</text>
+		<text x="330" y="1100" font-size="40">320</text>
+		<line x1="0" y1="1090" x2="320" y2="1090" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Saarland">
+		<text x="-185" y="1200" font-size="40">Saarland</text>
+		<text x="416" y="1200" font-size="40">406</text>
+		<line x1="0" y1="1190" x2="406" y2="1190" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Sachsen">
+		<text x="-175" y="1300" font-size="40">Sachsen</text>
+		<text x="1244" y="1300" font-size="40">1234</text>
+		<line x1="0" y1="1290" x2="1234" y2="1290" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Sachsen-Anhalt">
+		<text x="-300" y="1400" font-size="40">Sachsen-Anhalt</text>
+		<text x="871" y="1400" font-size="40">861</text>
+		<line x1="0" y1="1390" x2="861" y2="1390" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Schleswig-Holstein">
+		<text x="-360" y="1500" font-size="40">Schleswig-Holstein</text>
+		<text x="153" y="1500" font-size="40">143</text>
+		<line x1="0" y1="1490" x2="143" y2="1490" stroke="black" stroke-width="48"/>
+	</g>
+	<g id="Thüringen">
+		<text x="-210" y="1600" font-size="40">Thüringen</text>
+		<text x="1050" y="1600" font-size="40">1040</text>
+		<line x1="0" y1="1590" x2="1040" y2="1590" stroke="black" stroke-width="48"/>
+	</g>
+	
+	
+</svg>
+
 </body>
-<script>
-    function print(string){
-     document.getElementById("dsplay").innerHTML = string;
- }
- 
- function concatTexts(texts){
- 
-     // Lines
-
-     let linesTextA = texts[0].length;
-     let linesTextB = texts[1].length;
-     let linesMax = linesTextA;
-     if (linesTextB > linesTextA) linesMax = linesTextB;
- 
-     // Concat lines
-
-     let concatedText = "";
-     let i = 0;
-     for (; i<linesMax ; i++) {
-
-         if((i >= linesTextA) || (i >= linesTextB)) {
-             if(i >= linesTextA){
-                 concatedText += texts[1][i] + "\n";
-             } else {
-                 concatedText += texts[0][i] + "\n";
-             }
-         } else {
-             concatedText += texts[0][i] + texts[1][i] + "\n";
-         }
-     }
- 
-     return concatedText;
- }
- 
- let textA = fetch("./A")
- .then(response => response.text())
- .then(text => text.split("\n"))
- .catch(error => console.log(error));
- 
- let textB = fetch("./B")
- .then(response => response.text())
- .then(string => string.split("\n"))
- .catch(error => console.log(error));
- 
- 
- Promise.all([textA,textB])
- .then(values => concatTexts(values))
- .then(concatedText => print(concatedText));
-</script>
 </html>
