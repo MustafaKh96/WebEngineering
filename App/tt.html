@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <svg id="svg" viewbox="-500 10 1900 800">
+
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="50" y="100" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="-150" y="100" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="-350" y="100" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="50" y="300" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="-150" y="300" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="-350" y="300" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="50" y="500" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="-150" y="500" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+        <g class="area" id="1" transform="translate(200,0)">
+            <rect width="180" height="180" x="-350" y="500" fill="white" stroke="black" stroke-width="2"></rect>
+        </g>
+    </svg>
+</body>
+<script>
+    const areas = document.getElementsByClassName('area');
+    var game = []
+        var symbol = ''
+
+        window.addEventListener('load', () => {
+            game = [0,0,0,0,0,0,0,0,0];
+            symbol = 'X';
+            Array.from(areas).forEach(area => {
+                area.addEventListener('click', (e) => {
+                    if (symbol === 'X') {
+                        area.setAttribute('fill', 'blue');
+                        symbol = 'O'
+                    }
+                    else if (symbol === 'O') {
+                        area.setAttribute('fill', 'red');
+                        symbol = 'X'
+                    }
+                }); 
+            })
+        }); 
+
+        const toggleSymbol = (target) => {
+            if (symbol === 'X') {
+                printCross(target)
+                symbol = 'O'
+            }
+            else if (symbol === 'O') {
+                printCircle(target)
+                symbol = 'X'
+            } 
+        };
+
+        const printCross = (target) => {
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+            group.setAttribute('id', 'cross')
+            group.setAttribute('style', 'stroke: #000;stroke-width: 8')
+            
+            const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+            line1.setAttribute('x1','20')
+            line1.setAttribute('y1','20')
+            line1.setAttribute('x2','180')
+            line1.setAttribute('y2','180')
+            
+            const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+            line2.setAttribute('x1','20')
+            line2.setAttribute('y1','180')
+            line2.setAttribute('x2','180')
+            line2.setAttribute('y2','20')
+
+            group.appendChild(line1)
+            group.appendChild(line2)
+
+            target.prepend(group)
+        }
+
+        const printCircle = (target) => {
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+            group.setAttribute('id', 'cross')
+            group.setAttribute('style', 'stroke: #000;stroke-width: 8;fill: #fff')
+           
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+            circle.setAttribute('cx','100')
+            circle.setAttribute('cy','100')
+            circle.setAttribute('r','80')
+
+            group.appendChild(circle)
+
+            target.prepend(group)
+        }
+</script>
+</html>

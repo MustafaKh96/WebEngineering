@@ -1,15 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dw</title>
+    <title>Übung 9.3</title>
 </head>
 <body>
-    
+    <svg width="600" height="600">
+        <g id="tictactoe" style="pointer-events: bounding-box;">
+
+            <line style="stroke: #aaa;stroke-width: 2" x1="200" y1="0" x2="200" y2="600"></line>
+            <line style="stroke: #aaa;stroke-width: 2" x1="400" y1="0" x2="400" y2="600"></line>
+            <line style="stroke: #aaa;stroke-width: 2" x1="0" y1="200" x2="600" y2="200"></line>
+            <line style="stroke: #aaa;stroke-width: 2" x1="0" y1="400" x2="600" y2="400"></line>
+
+
+            <g class="area" id="0" transform="translate(0,0)">
+
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+                
+            </g>
+            <g class="area" id="1" transform="translate(200,0)">
+
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+
+            </g>
+            <g class="area" id="2" transform="translate(400,0)">
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+
+            </g>
+            <g class="area" id="3" transform="translate(0,200)">
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+
+            </g>
+            <g class="area" id="4" transform="translate(200,200)">
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+
+            </g>
+            <g class="area" id="5" transform="translate(400,200)">
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+
+            </g>
+            <g class="area" id="6" transform="translate(0,400)">
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+
+            </g>
+            <g class="area" id="7" transform="translate(200,400)">
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+
+            </g>
+            <g class="area" id="8" transform="translate(400,400)">
+                <rect width="200" height="200" style="fill: #fff;opacity: 0%;stroke: #fff;stroke-opacity: 0%"></rect>
+            </g>
+        </g>
+    </svg>
+    <script>
+        const areas = document.getElementsByClassName('area')
+        var game = []
+        var symbol = ''
+
+        window.addEventListener('load', () => {
+            game = [0,0,0,0,0,0,0,0,0]
+            symbol = 'X'
+            Array.from(areas).forEach(area => {
+                area.addEventListener('click', (e) => {
+                    toggleSymbol(e.target.parentElement)  
+                },{ once: true })  
+                  
+            })
+        }); 
+
+        const toggleSymbol = (target) => {
+            if (symbol === 'X') {
+                printCross(target)
+                symbol = 'O'
+            }
+            else if (symbol === 'O') {
+                printCircle(target)
+                symbol = 'X'
+            } 
+        }
+
+        const printCross = (target) => {
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+            group.setAttribute('id', 'cross')
+            group.setAttribute('style', 'stroke: #000;stroke-width: 8')
+            
+            const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+            line1.setAttribute('x1','20')
+            line1.setAttribute('y1','20')
+            line1.setAttribute('x2','180')
+            line1.setAttribute('y2','180')
+            
+            const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+            line2.setAttribute('x1','20')
+            line2.setAttribute('y1','180')
+            line2.setAttribute('x2','180')
+            line2.setAttribute('y2','20')
+
+            group.appendChild(line1)
+            group.appendChild(line2)
+
+            target.prepend(group)
+        }
+
+        const printCircle = (target) => {
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+            group.setAttribute('id', 'cross')
+            group.setAttribute('style', 'stroke: #000;stroke-width: 8;fill: #fff')
+           
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+            circle.setAttribute('cx','100')
+            circle.setAttribute('cy','100')
+            circle.setAttribute('r','80')
+
+            group.appendChild(circle)
+
+            target.prepend(group)
+        }
+    </script>
 </body>
-<script>
-    
-</script>
 </html>

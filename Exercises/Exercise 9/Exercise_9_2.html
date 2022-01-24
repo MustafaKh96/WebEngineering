@@ -21,6 +21,9 @@
             stroke:steelblue;
             
         }
+        #line1:hover{
+            stroke:rgb(192, 21, 21);
+        }
     </style>
 </head>
 <body>
@@ -53,34 +56,36 @@
             Implementieren Sie ein eigenes Balkendiagramm mit HTML, Inline SVG, CSS und JavaScript. Geben Sie die Daten für das Balkendiagramm im JSON-Format vor. <br> Nehmen Sie als Beispieldaten die COVID-19: Fallzahlen in Deutschland. Animieren Sie die Grafik (siehe z.B. Highchart Bar Chart).
         </h2>
     <div id="lo">
-        <h2 style="margin-left: 20px;">ballon d'or winners:</h2>
-        <svg id="svg" viewbox="-800 10 1900 800">
+        <h1 style="margin-left: 20px;">ballon d'or winners:</h1>
+        <svg id="svg" viewbox="-740 10 1900 800">
 
-            <line x1="-60" y1="60" x2="-60" y2="530" stroke="black" stroke-width="2"/>
+            <line x1="-60" y1="60" x2="-60" y2="527" stroke="black" stroke-width="2"/>
     
             <text x="-248" y="100" font-size="30">Lionel Messi</text>
-            <line class="line" x1="-60" y1="92" x2="700" y2="92" stroke="black" stroke-width="20"/>
-            <text id="txt1" x="710" y="100" font-size="27"></text>
+            <line id="line1" x1="-60" y1="92" x2="780" y2="92" stroke="black" stroke-width="20"/>
+            <text id="txt1" x="790" y="100" font-size="27"></text>
     
             <text x="-310" y="180" font-size="30">Cristiano Ronaldo</text>
-            <line class="line" x1="-60" y1="170" x2="500" y2="170" stroke="black" stroke-width="20"/>
-            <text id="txt2" x="510" y="180" font-size="27"></text>
+            <line class="line" x1="-60" y1="170" x2="540" y2="170" stroke="black" stroke-width="20"/>
+            <text id="txt2" x="550" y="180" font-size="27"></text>
     
             <text class="line" x="-250" y="260" font-size="30">Johan Cruyff</text>
             <line class="line" x1="-60" y1="248" x2="300" y2="248" stroke="black" stroke-width="20"/>
             <text id="txt3" x="310" y="258" font-size="30"></text>
     
             <text x="-390" y="340" font-size="30">Karl Heinz Rummenigge</text>
-            <line class="line" x1="-60" y1="326" x2="200" y2="326" stroke="black" stroke-width="20"/>
-            <text id="txt4" x="210" y="336" font-size="30"></text>
+            <line class="line" x1="-60" y1="326" x2="180" y2="326" stroke="black" stroke-width="20"/>
+            <text id="txt4" x="190" y="336" font-size="30"></text>
     
             <text x="-260" y="420" font-size="30">Michel Platini</text>
             <line class="line" x1="-60" y1="410" x2="300" y2="410" stroke="black" stroke-width="20"/>
             <text id="txt5" x="310" y="420" font-size="30"></text>
             
             <text x="-320" y="500" font-size="30">Franz Beckenbauer</text>
-            <line class="line" x1="-60" y1="488" x2="200" y2="488" stroke="black" stroke-width="20"/>
-            <text id="txt6" x="210" y="500" font-size="30"></text>
+            <line class="line" x1="-60" y1="488" x2="180" y2="488" stroke="black" stroke-width="20"/>
+            <text id="txt6" x="190" y="500" font-size="30"></text>
+
+            
 
            
 
