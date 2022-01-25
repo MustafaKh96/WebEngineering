@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        svg:hover {
+            transform: scale(2);
+        }
+        #lo{
+            border: 2px solid black;
+            box-shadow: 0 0 1em black;
+            width: 350px;    
+        }
+    </style>
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_10_2.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3>10.3 TypeScript auf Deno</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_10_1.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_10_1.html">10.1 Static classes in TypeScript</a>
+            <a href="./Exercise_10_2.html">10.2 Fehler finden mit TypeScript </a>
+            <a href="./Exercise_10_3.html">10.3 TypeScript auf Deno</a>
+            </div>
+        </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Gibt es in TypeScript statische Klassen? Erläutern Sie den Unterschied von TypeScript zu anderen objekt-orientierten, statisch typisierten Programmiersprachen wie Java und C#.
+        </h2>
+        <h2 class="answer">
+            
+        <pre>
+    import { serve } from "https://deno.land/std@0.117.0/http/server_legacy.ts";
+
+    console.log("http://localhost:8000/");
+
+    const anzahl: number[] = [932965, 1246136 , 297446, 210009, 42434, 
+                        122871, 445589, 85065, 404962, 1274675, 257311, 
+                        68236, 591502, 194507, 104875, 253023];
+                        
+    const max: number = Math.max(...anzahl);
+    const min: number = Math.min(...anzahl);
+    const sum: number = anzahl.reduce(myFunction)
+    function myFunction(total: number, value: number) {
+        return total + value;
+    }
+    const average: number = sum/anzahl.length;
+
+    const server = serve({ port: 8000 });
+
+    console.log("http://localhost:8000/");
+
+    for await (const req of server){
+    req.respond({ body: "Die kleinste Anzahl von Covid Infektionen ist: "+ min + "\n"+
+                        "Die groesste Anzahl von Covid Infektionen ist: "+ max + "\n"+
+                        "Die durchnitlische Anzahl von Covid Infektionen ist: "+ average + "\n"+
+                        "Die gesamte Anzahl von Covid Infektionen ist: "+ sum })};
+        </pre>
+            
+        </h2>
+    </div>
+</body>

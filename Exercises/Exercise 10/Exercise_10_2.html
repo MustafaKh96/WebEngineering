@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript</title>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        svg:hover {
+            transform: scale(2);
+        }
+        #lo{
+            border: 2px solid black;
+            box-shadow: 0 0 1em black;
+            width: 350px;    
+        }
+    </style>
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="./Exercise_10_1.html">
+            <i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        </a>
+        <div class="Uebung" id="U11">
+            <h3>10.2 Fehler finden mit TypeScript</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_10_3.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="abc">
+            <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+            <div class="Index" style="right:0;">
+            <a href="./Exercise_10_1.html">10.1 Static classes in TypeScript</a>
+            <a href="./Exercise_10_2.html">10.2 Fehler finden mit TypeScript</a>
+            <a href="./Exercise_10_3.html">10.3 TypeScript auf Deno</a>
+            </div>
+        </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Gegeben sei folgendes fehlerbehaftete JavaScript-Programm. Ergänzen Sie dieses um möglichst viele Typisierungen und übersetzen Sie es in ein TypeScript-Programm.
+            <pre>
+const add = (x,y) => x+y;
+const equals = (x,y) => x===y;
+
+console.log( add(1,2) );
+console.log( add(true, true ) );
+console.log( add(true, false ) );
+var x = y = 1;
+console.log( add(equals(x,y), equals(y,x)) );
+            </pre>
+        </h2>
+        <h2 class="question">
+            1) Was ist der Fehler in dem gegebenen JavaScript-Code?
+        </h2>
+        <h2 class="answer">
+            <pre>
+    Datentyp wird nicht berücksichtigt. Deshalb werden die booleschen Werte bei true=1 und false=0 addiert.
+            </pre>
+        </h2>
+        <h2 class="question">
+            2) Geben Sie hier Ihren TypeScript-Code ein:
+        </h2>
+        <h2 class="answer">
+            <pre>
+    const add = (x:number, y:number) => x+y;
+    const equals = (x:boolean, y:boolean) => x===y;
+    console.log(add(1,2)); 
+    console.log(add(true, true)); 
+    console.log(add(true, false)); 
+    var x = y = 1; 
+    console.log(add(equals(x,y), equals(y,x)));
+            </pre>
+        </h2>
+        <h2 class="question">
+            3) Welche Fehler meldet TypeScript?
+        </h2>
+        <h2 class="answer">
+            <pre>
+    1) console.log( add(true, true )); und console.log( add(true, false )); 
+
+    Number wird erwartet und boolean wird gegeben. 
+
+    2) var x = y = 1; 
+
+    3) console.log( add(equals(x,y), equals(y,x)) ); 
+
+    Number wird erwartet und boolean wird gegeben.
+            </pre>
+            </h2>
+        <h2 class="question">
+            4) Geben Sie weitere Beispiele an, wie TypeScript bei der Fehlersuche helfen kann:
+        </h2>
+        <h2 class="answer">
+            <pre>
+    Durch ausführlische Kommentare im Code sind immer hilfreich für die Fehlersuche 
+    const trueandfalse = (x: boolean) : 
+        if (x === true) 
+        {
+            console.log('1');
+        }
+
+        if (x === false) {
+            console.log('0');
+        };
+        trueandfalse(2);
+
+        Die trueandfalse funktion wird nicht ausgeführt, weil sie NUR ein Boolean-wert erwartet.
+        
+            </pre>
+            </h2>
+    </div>
+</body>
