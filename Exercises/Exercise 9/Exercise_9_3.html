@@ -10,6 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVG</title>
     <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        #Spieler1{
+            background-color: violet;
+        }
+        button{
+            background-color:rgba(15, 110, 187, 0.712);
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            margin: 4px 2px;
+        }
+        #res{
+            margin-top: -100px;
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="Header">
@@ -36,4 +52,127 @@
             </div>
         </div>
     </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Implementieren Sie das Spiel <a href="https://de.wikipedia.org/wiki/Tic-Tac-Toe">Tic-Tac-Toe</a> als HTML-Datei mit Inline SVG, CSS und JavaScript.
+        </h2>
+        <svg width="600" height="600">
+            <g id="tictactoe" style="pointer-events: bounding-box;">
+                <g class="box" id="0" transform="translate(0,0)">
+    
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+                    
+                </g>
+                <g class="box" id="1" transform="translate(150,0)">
+    
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+    
+                </g>
+                <g class="box" id="2" transform="translate(300,0)">
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+    
+                </g>
+                <g class="box" id="3" transform="translate(0,150)">
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+    
+                </g>
+                <g class="box" id="4" transform="translate(150,150)">
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+    
+                </g>
+                <g class="box" id="5" transform="translate(300,150)">
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+    
+                </g>
+                <g class="box" id="6" transform="translate(0,300)">
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+    
+                </g>
+                <g class="box" id="7" transform="translate(150,300)">
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+    
+                </g>
+                <g class="box" id="8" transform="translate(300,300)">
+                    <rect width="150" height="150" fill="white" stroke="black" stroke-width="2" style="opacity: 25%;"></rect>
+                </g>
+            </g>
+        </svg>
+        <h2 id="res"></h2>
+        <button onclick="location.reload()">nochmal spielen</button>
+    </div>
 </body>
+<script>
+    const myPlay = document.getElementsByClassName('box');
+    var spieler = '';
+    var spiel = [0,0,0,0,0,0,0,0,0]
+    window.addEventListener('load', () => {
+        spieler = 'Spieler X'
+        Array.from(myPlay).forEach(box => {
+            
+            box.addEventListener('click', (e) => {
+                
+                if (spieler === 'Spieler X') {
+                    const spalteA = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+                    spalteA.setAttribute('x1','10')
+                    spalteA.setAttribute('y1','10')
+                    spalteA.setAttribute('x2','140')
+                    spalteA.setAttribute('y2','140')
+                    spalteA.setAttribute('stroke', 'black')
+                    spalteA.setAttribute('stroke-width','6')
+                    
+                    const spalteB = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+                    spalteB.setAttribute('x1','140')
+                    spalteB.setAttribute('y1','10')
+                    spalteB.setAttribute('x2','10')
+                    spalteB.setAttribute('y2','140')
+                    spalteB.setAttribute('stroke', 'black')
+                    spalteB.setAttribute('stroke-width','6')
+
+                    e.target.parentElement.prepend(spalteA);
+                    e.target.parentElement.prepend(spalteB);
+
+                    var theIdx = e.target.parentElement.id;
+                    spiel[theIdx] = 1;
+                    console.log(spiel);
+                    spielBewerten();
+                    spieler = 'Spieler O'
+                }
+                else if (spieler === 'Spieler O') {
+                    const myO = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+                    myO.setAttribute('cx','75')
+                    myO.setAttribute('cy','75')
+                    myO.setAttribute('r','60')
+                    myO.setAttribute('stroke', 'black')
+                    myO.setAttribute('stroke-width', '6')
+                    myO.setAttribute('fill', 'white')
+
+                    e.target.parentElement.prepend(myO)
+
+                    var theIdy = e.target.parentElement.id;
+                    spiel[theIdy] = 5;
+                    console.log(spiel)
+                    spielBewerten();
+                    spieler = 'Spieler X'
+                }  
+            },{ once: true })  
+            
+        })
+        
+    }); 
+    
+
+    function spielBewerten(){
+        if(spiel[0]+spiel[1]+spiel[2] === 3 || spiel[0]+spiel[3]+spiel[6] === 3 || spiel[0]+spiel[4]+spiel[8] === 3 || spiel[3]+spiel[4]+spiel[5] === 3 || spiel[6]+spiel[7]+spiel[8] === 3 || spiel[1]+spiel[4]+spiel[7] === 3 || spiel[2]+spiel[6]+spiel[8] === 3 || spiel[2]+spiel[4]+spiel[6] === 3){
+            document.getElementById("res").innerHTML = "Spieler X hat gewonnen";
+        }
+        else if(spiel[0]+spiel[1]+spiel[2] === 15 || spiel[0]+spiel[3]+spiel[6] === 15 || spiel[0]+spiel[4]+spiel[8] === 15 || spiel[3]+spiel[4]+spiel[5] === 15 || spiel[6]+spiel[7]+spiel[8] === 15 || spiel[1]+spiel[4]+spiel[7] === 15 || spiel[2]+spiel[6]+spiel[8] === 15 || spiel[2]+spiel[4]+spiel[6] === 15){
+            document.getElementById("res").innerHTML = "Spieler O hat gewonnen";
+        }
+        else if((spiel[0] !== 0) && (spiel[1] !== 0) && (spiel[2] !== 0) && (spiel[3] !== 0) && (spiel[4] !== 0) && (spiel[5] !== 0) && (spiel[6] !== 0) && (spiel[7] !== 0) && (spiel[8] !== 0)){
+            document.getElementById("res").innerHTML = "Unentschieden!";
+        }
+    }
+
+
+</script>
+</html>

@@ -49,12 +49,13 @@
             </div>
         </div>
     </div>
+    <div class="Loesung">
     <h2 class="question">
         Schreiben Sie eine Webseite, in die man eine Zeichenkette mit beliebigen Buchstaben, Zahlen und Sonderzeichen eingeben kann, die beliebig geschachtelte Klammern [...], (...) und {...} enthält, so dass sofort geprüft wird, ob alle Klammerpaare korrekt geschachtelt sind. Das Eingabefeld der Zeichenkette soll rot gefärbt werden, wenn es ein Klammerpaar gibt, das falsch geschachtelt ist.
     </h2>
     Schreiben Sie hier: <input type="text" id="myInput" onkeyup="myFunktion()">
     <h2 class="answer">
-        <pre> 
+        <pre style="white-space: pre-wrap;"> 
     function myFunktion() {
         var zaehler = [];
         var myInput = document.getElementById('myInput');
@@ -85,6 +86,7 @@
     }
         </pre>
     </h2>
+</div>
     <script>
         function myFunktion() {
                 var zaehler = [];

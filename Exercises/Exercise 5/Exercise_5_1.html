@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einführung</title>
+    <title>DOM</title>
     <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
     <style>
         table{
@@ -46,9 +46,10 @@
             </div>
         </div>
     </div>
+    <div class="Loesung">
     <h2 class="question">
-        Implementieren Sie Performanzmessungen zum Vergleich von innerHTML, innerText, textContent und outerHTML selbstständig in JavaScript durch Nutzung der DOM API. Geben Sie die Messergebnisse als Tabelle aus. Verwenden Sie die eingebauten Zeitmess-Funktionen performance.now (), siehe auch When-milliseconds-are-not-enough-performance-now. Suchen Sie eine möglichst kurze und elegante Lösung.
-        Dabei ist zu beachten, dass Browser, um potenzielle Sicherheitsbedrohungen wie Spectre oder Meltdown zu minimieren, den zurückgegebenen Wert normalerweise um einen bestimmten Betrag runden. Dies führt zu einer gewissen Ungenauigkeit. Beispielsweise rundet Firefox die zurückgegebene Zeit in Schritten von 1 Millisekunde. Diese Zwangsrundung kann man jedoch wiederum abschalten mittels Firefox setting privacy.reduceTimerPrecision, siehe How to get microsecond timings in JavaScript since Spectre and Meltdown.
+        Implementieren Sie Performanzmessungen zum Vergleich von innerHTML, innerText, textContent und outerHTML selbstständig in JavaScript durch Nutzung der DOM API. Geben Sie die Messergebnisse als Tabelle aus. Verwenden Sie die eingebauten Zeitmess-Funktionen performance.now (), siehe auch When-milliseconds-are-not-enough-performance-now. <br> Suchen Sie eine möglichst kurze und elegante Lösung.
+        Dabei ist zu beachten, dass Browser, um potenzielle Sicherheitsbedrohungen wie Spectre oder Meltdown zu minimieren, den zurückgegebenen Wert normalerweise um einen bestimmten Betrag runden. Dies führt zu einer gewissen Ungenauigkeit. <br> Beispielsweise rundet Firefox die zurückgegebene Zeit in Schritten von 1 Millisekunde. Diese Zwangsrundung kann man jedoch wiederum abschalten mittels Firefox setting privacy.reduceTimerPrecision, siehe How to get microsecond timings in JavaScript since Spectre and Meltdown.
     </h2>
     <div>
         <table>
@@ -120,5 +121,6 @@ const t2_f_ot = performance.now();
 document.getElementById("zm4").innerHTML = t2_f_ot-t1_f_ot;   
         </pre>
     </h2>
+</div>
 </body>
 </html>

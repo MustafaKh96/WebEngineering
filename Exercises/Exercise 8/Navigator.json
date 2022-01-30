@@ -1,0 +1,26 @@
+{
+    "html": {
+      "Kommentare": {
+        "inhalt": "<h2>Kommentar ist ein Stück Code, das von jedem Webbrowser ignoriert wird. Es empfiehlt sich, Kommentare in Ihren HTML-Code einzufügen, insbesondere in komplexen Dokumenten, um Abschnitte eines Dokuments und andere Hinweise für jeden anzuzeigen, der sich den Code ansieht. Kommentare helfen Ihnen und anderen, Ihren Code zu verstehen, und verbessern die Lesbarkeit des Codes.HTML-Kommentare werden zwischen <!-- ... --> Tags platziert. Daher wird jeder Inhalt, der innerhalb von <!-- ... --> Tags platziert wird, als Kommentar behandelt und vom Browser vollständig ignoriert.</h2>"
+      },
+      "Tabellen": {
+        "inhalt": "<h2>Die HTML-Tabellen ermöglichen es Webautoren, Daten wie Text, Bilder, Links, andere Tabellen usw. in Zeilen und Spalten von Zellen anzuordnen. Die HTML-Tabellen werden mit dem < table> -Tag erstellt, in dem das < tr> -Tag zum Erstellen von Tabellenzeilen und das <td> -Tag zum Erstellen von Datenzellen verwendet wird. Die Elemente unter < td> sind standardmäßig regulär und linksbündig ausgerichtet</h2>"
+      }
+    },
+    "css": {
+      "Margin": {
+        "inhalt": "<h2>Mit den CSS-Randeigenschaften können Sie den Abstand um den Rahmen eines Elementrahmens (oder den Rand des Elementrahmens, wenn dieser keinen definierten Rahmen hat) festlegen. Der Rand eines Elements wird nicht von seinem beeinflusst background-color, er ist immer transparent. Wenn das übergeordnete Element jedoch die Hintergrundfarbe hat, ist es durch seinen Randbereich sichtbar.</h2>"
+      },
+      "Padding": {
+        "inhalt": "<h2>Mit den CSS-Padding-Eigenschaften können Sie den Abstand zwischen dem Inhalt eines Elements und seinem Rahmen (oder dem Rand der Elementbox, wenn es keinen definierten Rahmen hat) festlegen. Die Polsterung wird durch das Element beeinflusst background-color. Wenn Sie beispielsweise die Hintergrundfarbe für ein Element festlegen, ist es durch den Polsterbereich sichtbar.</h2>"
+      }
+    },
+    "javascript": {
+      "Strings": {
+        "inhalt": "<h2>Ein String ist eine Folge von Buchstaben, Zahlen, Sonderzeichen und arithmetischen Werten oder eine Kombination aus allen. Zeichenfolgen können erstellt werden, indem das Zeichenfolgenliteral (dh Zeichenfolgenzeichen) entweder in einfache Anführungszeichen ( ') oder doppelte Anführungszeichen ('') eingeschlossen werden</h2>"
+      },
+      "Zahlen": {
+        "inhalt": "<h2>JavaScript unterstützt sowohl Integer- als auch Fließkommazahlen, die in Dezimal-, Hexadezimal- oder Oktalschreibweise dargestellt werden können. Im Gegensatz zu anderen Sprachen behandelt JavaScript Integer- und Fließkommazahlen nicht unterschiedlich. Alle Zahlen in JavaScript werden als Fließkommazahlen dargestellt.</h2> "
+      }
+    }
+  }

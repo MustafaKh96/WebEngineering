@@ -10,6 +10,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Async</title>
     <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <style>
+        #kopf{
+            background-color: #2552a55d;
+            border: 2px solid black;
+            text-align: center;
+        }
+        h1{
+            align-items: center;
+        }
+        .buttonskopf{
+            background-color:rgba(15, 110, 187, 0.712);
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            margin: 4px 2px;
+        }
+        #inhaltA{
+            background-color: #2552a533;
+            padding-top: 15px;
+            text-align: center;
+            border: 2px solid black;
+            border-top: white;
+            min-height: 80px;
+        }
+        #inhaltB{
+            background-color: #2552a533;
+            padding-top: 15px;
+            text-align: center;
+            border: 2px solid black;
+            border-top: white;
+            min-height: 400px;
+        }
+        #fo{
+            background-color: #2552a55d;
+            padding-top: 30px;
+            min-height: 70px;
+            border: 2px solid black;
+            border-top: white;
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="Header">
@@ -38,37 +80,75 @@
     </div>
     <div class="Loesung">
         <h2 class="question">
-            Lösen Sie die letzte Aufgabe mit async / await statt Promise.
+            Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. <br> Im Hauptmenü sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum jeweiligen ausgewählten Oberthema stehen. In der Mitte soll eine Dokumentation zum ausgewählten Fachbegriff erscheinen. <br> <br>
+            Schreiben Sie in HTML und CSS nur den responsiven Rahmen für einen solchen WWW-Navigator. Dabei können Sie auch ein schöneres Layout als das hier gezeigte erstellen. Die Inhalte sollen in einer JSON-Datei extern gelagert werden. <br> Mit der fetch-API soll die JSON-Datei asynchron nicht-blockierend geladen werden, und zwar nur einmal, nicht mehrfach. (d.h. Sparen Sie Internet-Bandbreite.) Sobald die Inhalte angekommen sind, sollen sie im Browser auch sofort angezeigt werden. <br>
+            Fügen Sie selbst in die JSON-Datei zusätzliche Inhalte zu Themen der Vorlesung als Strings beispielhaft ein. Wenn Sie Inhalte aus fremden Quellen kopieren, so schreiben Sie bitte stets die Quelle als externe Ressource hinzu. Diese soll dann auf der rechten Seite im WWW-Navigator erscheinen.
         </h2>
-        <h2 class="answer">
-            <pre>
-                async function myFunction() {
-                    let responseA = await fetch("./A");
-                    let textA = await responseA.text();
-                    textA = await textA.split("\n");
-        
-                    let responseB = await fetch("./B");
-                    let textB = await responseB.text();
-                    textB = await textB.split("\n");
-        
-                
-                    await Promise.all([textA,textB])
-                    .then(function(myTexts){
-                    let erg = "";
-                    let z = 0;
-                    while(z < myTexts[0].length){
-                        erg+=myTexts[0][z];
-                        erg+=myTexts[1][z];
-                        erg+= "\n";
-                        z++;
-                    }
-                        return erg;
-                    })
-                    .then(values => console.log(values));
-                }
-                myFunction();
-        </pre>
-        </h2>
+        <h2>Die Seite ist:</h2>
+        <div id="kopf">
+            <h1>WWW-Navigator</h1>
+            <button class="buttonskopf" id="html" onclick='myFunction("html")'>HTML</button>
+            <button class="buttonskopf" id="css" onclick='myFunction("css")'>CSS</button>
+            <button class="buttonskopf" id="javascript" onclick='myFunction("javascript")'>JavaScript</button>
+            <button class="buttonskopf" id="other" onclick='myFunction("other")'>Other</button>
+        </div>
+    
+        <div id="inhaltA">
+            <h2>
+                Wäheln Sie ein Thema aus!
+            </h2>
+        </div>
+        <div id="inhaltB">
+            <h2>
+                Hier erscheint Ihr gewünschter Text 
+            </h2>
+        </div>
+    
+        <div id="fo">
+            <footer>
+                <a href="">Sitemap</a>
+                <a href="">Home</a>
+                <a href="">News</a>
+                <a href="">Contact</a>
+                <a href="">About</a>
+                </p>
+            </footer>
+        </div>
     </div>
 </body>
+<script>
+    var myText = 0;
+    var options, thema = "";
+    myData().then(value => {
+        myText = value;
+    });
+    async function myData() {
+        const resp = await fetch("Navigator.json");
+        const respJson = await resp.json();
+        return respJson;
+    }
+
+    function myFunction(thema) {
+        const divInhaltA = document.getElementById("inhaltA");
+        const divInhaltB = document.getElementById("inhaltB");
+        divInhaltA.innerHTML = "";
+        divInhaltB.innerHTML = "";
+        options = myText[thema];
+        if(thema === "other"){
+            divInhaltA.innerHTML = "<h2>Es gibt keine weitere Themen mehr</h2>";
+            divInhaltB.innerHTML = "<h2>Hier erscheint Ihr gewünschter Text</h2>";
+        }
+        else{
+            for (let x in options) {
+            const button = document.createElement('button');
+            button.className = "buttonskopf";
+            button.innerHTML = x;
+            button.onclick = () => {
+                divInhaltB.innerHTML = options[x].inhalt;
+            };
+            divInhaltA.appendChild(button);
+        }
+        }
+    }
+</script>
 </html>
