@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>U6.4 Proxy</title>
+</head>
+<body>
+
+<p id="demo1"></p>
+
+<script type="text/javascript">
+
+
+    class Vorrang {
+
+
+        constructor(seq) {
+            this.seq = seq;
+            this.einzelne = einzelnelem(seq);
+        }
+
+        * [Symbol.iterator]() {
+
+            var knoten;
+            var q = [];
+            var elements = einzelnelem(this.seq);
+            knoten = anzahlvorg(elements, this.seq);
+            for (var i = 0; i < elements.length; i++) {
+                if (knoten[i].vorgaenger === 0) {
+                    q.push(knoten[i]);
+                }
+            }
+
+            var count = knoten.length;
+            var zaehler = 0;
+
+            while (zaehler < elements.length) {
+                if (count !== 0 && q.length === 0) {
+                    zaehler = elements.length + 1;
+                    yield -1;
+                    break;
+                }
+                var a = (q[0].item);
+                count--;
+                var tmp = q[0];
+                q.shift();
+                for (var i = 0; i < tmp.nachfolger.length; i++) {
+
+
+                    var index = knoten.findIndex(item => item.item === tmp.nachfolger[i]);
+
+                    knoten[index].vorgaenger--;
+                    if (knoten[index].vorgaenger === 0) {
+                        q.push(knoten[index]);
+                    }
+                }
+                zaehler++;
+
+                yield a;
+            }
+
+        }
+
+    }
+
+    function einzelnelem(list) {
+
+        var einzelne = new Set();
+
+
+        for (var i = 0; i < list.length; i++) {
+            einzelne.add(list[i][0]);
+            einzelne.add(list[i][1]);
+
+        }
+        return Array.from(einzelne);
+
+    }
+
+
+    function anzahlvorg(einzel, list) {
+
+
+        knoten = [];
+
+
+        einzel.forEach(x => {
+            knoten.push(new Knoten(x, 0, []))
+        });
+
+        for (var i = 0; i < list.length; i++) {
+
+            var index = knoten.findIndex(x => x.item === list[i][1]);
+            var index2 = knoten.findIndex(x => x.item === list[i][0]);
+
+            knoten[index].vorgaenger++;
+            knoten[index2].nachfolger.push(list[i][1]);
+
+        }
+
+        return knoten;
+
+    }
+
+
+    class Knoten {
+        constructor(item, vorgaenger, nachfolger) {
+
+            this.item = item;
+            this.vorgaenger = vorgaenger;
+            this.nachfolger = nachfolger;
+        }
+
+
+    }
+
+
+    function circletestmit() {
+        var vorangtest = new Vorrang([["schlafen", "studieren"], ["studieren", "schlafen"]]);
+        var toplist = [];
+        for (const next of vorangtest) {
+            toplist.push(toplist);
+        }
+        const leange = toplist.length;
+        var handcounter = 0;
+        const handler = {
+            get: function (target, prop, receiver) {
+
+                if (prop === "next") {
+                    handcounter++;
+                }
+                return "Es fehlen noch " + (leange - handcounter) + " Elemente";
+
+            }
+        };
+        var vorraangtestmit = new Vorrang([["schlafen", "studieren"], ["studieren", "schlafen"]]);
+        const proxytestmit = new Proxy(vorraangtestmit, handler);
+        for (const next of vorraangtestmit) {
+            a = proxytestmit.next;
+            console.log(next);
+            console.log(a);
+            console.assert("Es fehlen noch " + 0 + " Elemente" === a);
+        }
+
+    }
+
+
+
+        var handcounter = 0;
+        const handler = {
+            get: function (target, prop, receiver) {
+                if (prop === "next") {
+                    handcounter++;
+                }
+            }
+        };
+
+        var vorraangtestohne = new Vorrang([["schlafen", "studieren"], ["studieren", "essen"]]);
+        const ergebnisar = ["schlafen", "studieren", "essen"];
+        const proxytestohne = new Proxy(vorraangtestohne, handler);
+
+        handcounter = 0;
+        console.log(proxytestohne);
+        
+
+
+
+
+</script>
+</body>
+</html>

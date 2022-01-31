@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 6</title>
+    <title>ECMAScript</title>
     <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
     <style>
         table{
@@ -43,9 +43,9 @@
             <div class="Index" style="right:0;">
             <a href="./Exercise_6_1.html">6.1 Klammerpaare</a>
             <a href="./Exercise_6_2.html">6.2 Topologische Iterierbarkeit</a>
-            <a href="./Exercise_6_2.html">6.3 Topologischer Generator</a>
-            <a href="./Exercise_6_2.html">6.4 Proxy</a>
-            <a href="./Exercise_6_2.html">6.5 DeepCopy</a>
+            <a href="./Exercise_6_3.html">6.3 Topologischer Generator</a>
+            <a href="./Exercise_6_4.html">6.4 Proxy</a>
+            <a href="./Exercise_6_5.html">6.5 DeepCopy</a>
             </div>
         </div>
     </div>
@@ -53,7 +53,8 @@
     <h2 class="question">
         Schreiben Sie eine ES6-Klasse Vorrang für Vorrangrelationen, z.B. new Vorrang([ ["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"] ]). Wählen Sie eine Implementierung, die universell gültig, also nicht nur für dieses Beispiel gilt. (Überlegen Sie sich, über welche Properties und Methoden eine solche Klasse verfügen sollte und wie TopSort hier hineinspielt. Topologische Iterierbarkeit und topologischer Generator sind jedoch Gegenstand der nächsten Übungen weiter unten auf diesem Übungsblatt und sollten für die folgenden Aufgaben aufgespart werden.) <br>
         Stellen Sie bei Ihrer Klasse die topologische Iterierbarkeit her (zunächst über das Iterationsprotokoll, ohne Generator, ohne yield). <br>
-        Zum Beispiel soll dadurch folgende for ... of loop möglich werden, mit der die Elemente in topologischer Sortierung durchlaufen werden:
+        Wählen Sie eine Implementierung, die universell gültig, also nicht nur für dieses Beispiel gilt. <br> Eine topologische Sortierung im Konstruktor vorzuberechnen, wäre eine triviale Lösung. Versuchen Sie es stattdessen "lazy computation", d.h. erst beim Aufruf von next() wird die erforderliche Berechnung durchgeführt. Nebenbedingung ist minimaler Aufwand, d.h. bei jedem next() erneut alles zu sortieren, wird nicht als Lösung akzeptiert. <br>
+        Verwenden Sie so weit wie möglich High-Level-Methoden wie Object.keys und High-Level-Datenstrukturen wie Map und Set und deren Methoden, anstatt mühsam von Hand zu iterieren und zu zählen.
     </h2>
     <h2 class="answer">
         <pre> 
@@ -92,7 +93,8 @@
                 }
                 //---------------------------------------------------
                 // Quelle: https://stackoverflow.com/questions/37365512/count-the-number-of-times-a-same-value-appears-in-a-javascript-array
-                const occurrencesOf = (number,numbers) => numbers.reduce((counter, currentNumber)=> (number === currentNumber ? counter+1 : counter),0);
+                const occurrencesOf = (number,numbers) => numbers.reduce((counter, currentNumber)=> 
+                (number === currentNumber ? counter+1 : counter),0);
                 //---------------------------------------------------
                 var t = 0;
                 while(t < 2){
@@ -103,32 +105,60 @@
                     }
                     t = t + 1;
                 }
-                return erg;  
+                var e = 0;
+                let z12 = [];
+                while(e < erg.length){
+                    for(const rel of relation){
+                        if(erg[e] === rel[1]){
+                            var ind = erg.indexOf(erg[e]);
+                            while(ind < erg.length){
+                                if(rel[0] === erg[ind]){
+                                    var tmp;
+                                    tmp = erg[e];
+                                    erg[e] = erg[ind];
+                                    erg[ind] = tmp;
+                                }
+                                ind = ind + 1;
+                            }
+                        }
+                    }
+                    e = e + 1;     
+                }
+                return erg;   
             }   
         }
+        [Symbol.iterator]() {
+            const that = this;
+            let i = 0;
+            return {
+                next() {
+                    return {
+                        value: that.erg[i++],
+                        done: i > that.erg.length
+                    };
+                }
+            };
+        }
     }
-    
-    
-    const test1 = new Vorrang([["studieren","prüfen"],["schlafen","studieren"], ["essen","studieren"]]);
-    const test2 = new Vorrang([["essen","rauchen"],["schlafen","essen"],["rauchen","lernen"]]);
+
+    const test1 = new Vorrang([["schlafen","studieren"], ["essen","studieren"],["studieren","prüfen"],]);
+    const test2 = new Vorrang([["B","C"], ["A","B"], ["A","F"]]);
     for(const erg of test1){
-        console.log(erg);
+    console.log(erg);
     }
     console.log('------');
     for(const erg of test2){
-        console.log(erg);
+    console.log(erg);
     }
-
-    Das Ergebnis ist:
-    schlafen
-    essen
-    studieren
-    prüfen
-    ------
-    schlafen
-    essen
-    rauchen
-    lernen
+    // schlafen
+    // essen
+    // studieren
+    // prüfen
+    //--------
+    // A
+    // B
+    // C
+    // F
         </pre>
     </h2>
 </div>

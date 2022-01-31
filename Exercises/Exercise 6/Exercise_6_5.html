@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einführung</title>
+    <title>ECMAScript</title>
     <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
     <style>
         table{
@@ -43,11 +43,46 @@
             <div class="Index" style="right:0;">
             <a href="./Exercise_6_1.html">6.1 Klammerpaare</a>
             <a href="./Exercise_6_2.html">6.2 Topologische Iterierbarkeit</a>
-            <a href="./Exercise_6_2.html">6.3 Topologischer Generator</a>
-            <a href="./Exercise_6_2.html">6.4 Proxy</a>
-            <a href="./Exercise_6_2.html">6.5 DeepCopy</a>
+            <a href="./Exercise_6_3.html">6.3 Topologischer Generator</a>
+            <a href="./Exercise_6_4.html">6.4 Proxy</a>
+            <a href="./Exercise_6_5.html">6.5 DeepCopy</a>
             </div>
         </div>
+    </div>
+    <div class="Loesung">
+        <h2 class="question">
+            Schreiben Sie eine rekursive Funktion deepCopy( struct ) als ES6-Ausdruck, so dass beliebig geschachtelte Arrays und Objekte struct tiefenkopiert werden können. <br> Verwenden Sie zu diesem Zweck den konditionalen ternären Operator, Array.map(), Object.fromEntries() und Object.entries(). <br> Verwenden Sie dabei nur Arrow Functions und Ausdrücke, keine Anweisungen, keine Blöcke. <br> Verwenden Sie nicht die JSON-Methoden.
+        </h2>
+        <h2 class="answer">
+            <pre> 
+        const deepCopy = (struct) =>
+        {
+            var erg;
+            if(Array.isArray( struct )){
+                erg = [];
+                erg = struct.map(x => x);
+                return erg;
+            }
+            else if(!Array.isArray(struct) && typeof struct === "object"){
+                erg = {};
+                for (let pos in struct) {
+                    let wert = struct[pos];
+                    erg[pos] = deepCopy(wert);
+                }
+                return erg;
+            }
+            return struct;
+        }
+    
+    
+        const myarray = [[10, 20, 30, 40],[[1, 2]],[[0, 1],[0, 1]]];
+        const myObject = {vorname: "David", nachname: "Peter", myarray: [[10, 20, 30, 40],[[1, 2]],[[0, 1],[0, 1]]]};
+        console.log(myarray)
+        console.log(deepCopy(myarray));
+        console.log(myObject)
+        console.log(deepCopy(myObject));
+            </pre>
+        </h2>
     </div>
 
 </body>

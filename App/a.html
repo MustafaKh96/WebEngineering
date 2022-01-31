@@ -10,7 +10,6 @@
     
 </body>
 <script>
-    
     class Vorrang{
         constructor(relation){
             this.relation = relation;
@@ -58,57 +57,6 @@
                     }
                     t = t + 1;
                 }
-                return erg;  
-            }   
-        }
-    }
-
-    function topsort(relation){
-
-        if(relation.length == 0){
-                throw('Ihre Relation ist leer :(');
-        }
-        else{
-                var n = 0;
-                while(n < relation.length){
-                    var wort1 = relation[n][0];
-                    var rel_tmp = relation[n];
-                    var z = 0;
-                    while(z < relation.length){
-                        if(wort1 === relation[z][1]){
-                            var zz = 0;
-                            while(zz < rel_tmp.length){
-                                relation[z].push(rel_tmp[zz]);
-                                zz = zz + 1;
-                            }            
-                        }
-                        z = z + 1;
-                    }
-                    n = n + 1;
-                }
-                let erg = [];
-                for(const relation_x of relation){
-                    let zaehler1 = 0;
-                    while(zaehler1 < relation_x.length){
-                        erg.push(relation_x[zaehler1]);
-                        zaehler1 = zaehler1 + 1;
-                    }
-                }
-                console.log(erg);
-                 //---------------------------------------------------
-                // Quelle: https://stackoverflow.com/questions/37365512/count-the-number-of-times-a-same-value-appears-in-a-javascript-array
-                const occurrencesOf = (number,numbers) => numbers.reduce((counter, currentNumber)=> 
-                (number === currentNumber ? counter+1 : counter),0);
-                //--------------------------------------------------- 
-                var t = 0;
-                while(t < 2){
-                    for(const wort_x of erg){
-                        if(occurrencesOf(wort_x, erg) > 1){
-                            erg.splice(erg.indexOf(wort_x), 1);
-                        }
-                    }
-                    t = t + 1;
-                }
                 var e = 0;
                 let z12 = [];
                 while(e < erg.length){
@@ -128,26 +76,57 @@
                     }
                     e = e + 1;     
                 }
-                return erg;  
-        }   
+                return erg;   
+            }   
+        }
+        * [Symbol.iterator]() {
+        yield* this.order;
+        }
     }
 
+    const test = new Vorrang([["unterhose", "hose"], ["unterhemd", "pullover"], ["socken", "schuhe"],["pullover", "mantel"],["hose", "mantel"],["hose", "schuhe"]]);
 
+let log = [];
 
+const handler = {
+    i: 0,
+    get: function(obj, prop) {
 
+        if(prop == "nodes") {
+            this.i++;
+            log.push({steps: this.i, left: obj.nodes.length});
+        } 
+        return obj[prop];
+    }
+};
+  
+const proxy = new Proxy(test, handler);
 
+let expected = [
+    'unterhose',
+    'unterhemd',
+    'socken',
+    'hose',
+    'schuhe',
+    'pullover',
+    'mantel'
+];
 
-//const test1 = new Vorrang([["studieren","prüfen"],["schlafen","studieren"], ["essen","studieren"]]);
-//const test2 = new Vorrang([["essen","rauchen"],["schlafen","essen"],["rauchen","lernen"]]);
+let result = [];
 
-const test1 = topsort([["schlafen","studieren"], ["essen","studieren"],["studieren","prüfen"],]);
-const test2 = topsort([["B","C"], ["A","B"], ["A","F"]]);
-for(const erg of test1){
-console.log(erg);
+for (const i of proxy) {
+    result.push(i);
 }
-console.log('------');
-for(const erg of test2){
-console.log(erg);
+
+let counter = 0;
+for (const message of log) {
+    console.log(message);
 }
+
+console.log(proxy)
+
+
+
+  
 </script>
 </html>

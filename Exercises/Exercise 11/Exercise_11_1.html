@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="../Exercise 1/Exrcise_1.css">
+    <title>Vue</title>
+    <!--Start-->
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_icons_awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--End-->
+</head>
+<body>
+    <div class="Header">
+        <div id="hOmE">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-home" style="font-size:60px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div id="Links">
+            <a href="../AppExercise/AppExercise.html"><i class="fa fa-arrow-left" style="font-size:57px;color:rgb(143, 143, 143)"></i></a>
+        </div>
+        <div class="Uebung" id="U11">
+            <h3> 1.1 Komponente in Vue.js</h3>
+        </div>
+        <div id="rechts"> 
+            <a href="./Exercise_11_2.html"><i class="fa fa-arrow-right" style="font-size:57px;color:rgb(143, 143, 143)"></i></a></div>
+            <div id="abc">
+                <i class="fa fa-bars" style="font-size:57px;color:rgb(143, 143, 143)"></i>
+                    <div class="Index" style="right:0;">
+                        <a href="./Exercise_11_1.html">11.1 Komponente in Vue.js</a>
+                        <a href="./Exercise_11_2.html">11.2 Menü-Komponente</a>
+                        <a href="./Exercise_11_3.html">11.3 Vue.js WWW-Navigator</a>
+                        </div>
+                    </a>
+            </div>
+    </div>
+    <br>
+    <div class="Loesung">
+        <h2 class="question">
+            Schreiben Sie eine Vue.js Single File Component mit einem Text-Eingabefeld und 3 Ausgabefeldern, in denen man während des Tippens sehen kann, (a) wie viele Buchstaben (b) wie viele Leerzeichen und (c) wie viele Worte man in das Text-Eingabefeld bereits eingegeben hat. <br> Betten Sie Ihre Komponente in eine Webseite zweimal ein und testen Sie, ob beide Komponenten unabhängig voneinander sind.
+        </h2>
+        <div id="myField">
+            <input type="text"  v-model="srStatus">
+            <p>{{ Anzahl_Worte }}</p>
+            <p>{{ Anzahl_Buchstaben }}</p>
+            <p>{{ Anzahl_Leerzeichen }}</p>
+        </div>
+        <h2 class="answer">
+           <pre>
+    var myVue = new Vue({
+        el: '#myField',
+        data: { 
+            Anzahl_Worte: 'Anzahl der Wörter ist ',
+            Anzahl_Buchstaben: 'Anzahl der Buchstaben ist',
+            Anzahl_Leerzeichen: 'Anzahl der Leerzeichen ist',
+            srStatus: ''
+        },
+        watch: {
+            srStatus(myText) {
+                var buchstaben = 0,
+                leerzeichen = 0,
+                worte = 0;
+                for(var n=0; n< myText.length; n++) {
+                    var zeichenVor = myText.charAt(n-1);
+                    var zeichen = myText.charAt(n);
+                    if(zeichenVor == " " || n == 0){
+                        worte = worte + 1;
+                        buchstaben = buchstaben + 1;
+                    }
+                    else if (zeichen == " ") {
+                        leerzeichen = leerzeichen + 1;
+                    }
+                    else{
+                        buchstaben = buchstaben + 1;
+                    }
+                }
+                this.Anzahl_Worte = "Anzahl der Wörter ist " + worte;
+                this.Anzahl_Buchstaben = "Anzahl der Buchstaben ist " + buchstaben;
+                this.Anzahl_Leerzeichen = "Anzahl der Leerzeichen ist " + leerzeichen;
+            }
+        }
+    });
+           </pre>
+        </h2>
+    </div>
+    
+</body>
+<script>
+    var myVue = new Vue({
+    el: '#myField',
+    data: { 
+        Anzahl_Worte: 'Anzahl der Wörter ist ',
+        Anzahl_Buchstaben: 'Anzahl der Buchstaben ist',
+        Anzahl_Leerzeichen: 'Anzahl der Leerzeichen ist',
+        srStatus: ''
+    },
+    watch: {
+		srStatus(myText) {
+			var buchstaben = 0,
+			leerzeichen = 0,
+			worte = 0;
+			for(var n=0; n<myText.length; n++) {
+                var zeichenVor = myText.charAt(n-1);
+				var zeichen = myText.charAt(n);
+                if(zeichenVor == " " || n == 0){
+                    worte = worte + 1;
+                    buchstaben = buchstaben + 1;
+                }
+				else if (zeichen == " ") {
+					leerzeichen = leerzeichen + 1;
+				}
+                else{
+                    buchstaben = buchstaben + 1;
+                }
+			}
+            this.Anzahl_Worte = "Anzahl der Wörter ist " + worte;
+			this.Anzahl_Buchstaben = "Anzahl der Buchstaben ist " + buchstaben;
+			this.Anzahl_Leerzeichen = "Anzahl der Leerzeichen ist " + leerzeichen;
+		}
+	}
+});
+</script>
+</html>
