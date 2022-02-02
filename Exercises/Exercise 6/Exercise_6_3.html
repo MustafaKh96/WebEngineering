@@ -54,7 +54,7 @@
             Stellen Sie bei Ihrer Klasse aus der letzten Aufgabe die topologische Iterierbarkeit mittels Generator her. <br> Wählen Sie eine Implementierung, die universell gültig, also nicht nur für das Beispiel gilt.
         </h2>
         <h2 class="answer">
-            <pre> 
+            <pre style="white-space: pre-wrap;"> 
     class Vorrang{
         constructor(relation){
             this.relation = relation;
@@ -129,7 +129,7 @@
         }
     }
 
-    const test1 = new Vorrang([["schlafen","studieren"], ["essen","studieren"],["studieren","prüfen"],]);
+    const test1 = new Vorrang([["schlafen","studieren"], ["essen","studieren"],["studieren","prüfen"]]);
     const test2 = new Vorrang([["B","C"], ["A","B"], ["A","F"]]);
     for(const erg of test1){
     console.log(erg);

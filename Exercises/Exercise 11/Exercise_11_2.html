@@ -39,8 +39,52 @@
         <h2 class="question">
             Schreiben Sie eine möglichst flexible Vue.js Single File Component für Menüs und wenden Sie diese in derselben Webseite zweimal an, einmal horizontal, das andere Mal vertikal.
         </h2>
+    
+        <h2 class="answer">
+            <pre style="white-space: pre-wrap;">
+    --------index.html--------
 
+    &ltscript src="https://unpkg.com/vue">&lt/script>
+    &ltdiv id="app">
+        &ltsingle-file-component>&lt/single-file-component>
+        &ltcounter>&lt/counter>
+    &lt/div>
+    &ltscript type="module" src="./app.mjs">&lt/script>
+
+    --------app.mjs--------
+
+    import SingleFileComponent from './SingleFileComponent.mjs';
+    import Counter from './Counter.mjs';
+
+    new Vue({
+        el: '#app',
+        components: {
+        SingleFileComponent,
+        Counter
+        }
+        });
+
+    --------SingleFileComponent.mjs--------
+
+    export default{
+        template:`&ltul>
+                    &ltli>Option1&lt/li>
+                    &ltli>Option2&lt/li>
+                    &ltli>Option3&lt/li>
+                  &lt/ul>`
+    }
+
+    --------Counter.mjs--------
+
+    export default{
+        template:`&ltul>
+                    &ltli :style="{'float': 'left', 'margin-right': '15px', 'list-style': 'none' }">Option1&lt/li>
+                    &ltli :style="{'float': 'left', 'margin-right': '15px', 'list-style': 'none' }">Option2&lt/li>
+                    &ltli :style="{'float': 'left', 'margin-right': '15px', 'list-style': 'none' }">Option3&lt/li>
+                  &lt/ul>`
+    }
+            </pre>
+        </h2>
     </div>
-
 </body>
 </html>

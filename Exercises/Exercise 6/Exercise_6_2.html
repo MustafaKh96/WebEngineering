@@ -57,7 +57,7 @@
         Verwenden Sie so weit wie möglich High-Level-Methoden wie Object.keys und High-Level-Datenstrukturen wie Map und Set und deren Methoden, anstatt mühsam von Hand zu iterieren und zu zählen.
     </h2>
     <h2 class="answer">
-        <pre> 
+        <pre style="white-space: pre-wrap;"> 
     class Vorrang{
         constructor(relation){
             this.relation = relation;
@@ -141,7 +141,7 @@
         }
     }
 
-    const test1 = new Vorrang([["schlafen","studieren"], ["essen","studieren"],["studieren","prüfen"],]);
+    const test1 = new Vorrang([["schlafen","studieren"], ["essen","studieren"],["studieren","prüfen"]]);
     const test2 = new Vorrang([["B","C"], ["A","B"], ["A","F"]]);
     for(const erg of test1){
     console.log(erg);
